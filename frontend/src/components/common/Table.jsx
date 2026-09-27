@@ -1,31 +1,69 @@
 import React from 'react';
 
-export default function Table({ columns = [], data = [], keyField = 'id', className = '' }) {
+/**
+ * SPIS Table Component
+ * Dark data grid designed for intelligence breakdowns, user rankings, and community lists.
+ */
+export default function Table({
+  columns = [],
+  data = [],
+  keyField = 'id',
+  emptyMessage = 'No records found in this time window',
+  className = '',
+  onRowClick,
+}) {
   return (
-    <div className={`overflow-x-auto ${className}`}>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div className={`overflow-x-auto rounded-xl border border-[#172338] bg-[#0D1527] ${className}`}>
+      <table className="min-w-full divide-y divide-[#172338]">
+        <thead className="bg-[#0A101D]">
           <tr>
             {columns.map((col, idx) => (
-              <th key={idx} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th
+                key={idx}
+                className={`px-4 sm:px-5 py-3 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider ${
+                  col.align === 'right'
+                    ? 'text-right'
+                    : col.align === 'center'
+                    ? 'text-center'
+                    : 'text-left'
+                } ${col.headerClassName || ''}`}
+              >
                 {col.header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="divide-y divide-[#172338]/70">
           {data.length === 0 ? (
             <tr>
-              <td colSpan={columns.length} className="px-6 py-4 text-center text-sm text-gray-500">
-                No records found
+              <td
+                colSpan={columns.length}
+                className="px-6 py-8 text-center text-xs text-slate-500 italic"
+              >
+                {emptyMessage}
               </td>
             </tr>
           ) : (
             data.map((row, rowIdx) => (
-              <tr key={row[keyField] || rowIdx} className="hover:bg-gray-50">
+              <tr
+                key={row[keyField] || rowIdx}
+                onClick={() => onRowClick?.(row)}
+                className={`transition-colors ${
+                  onRowClick ? 'cursor-pointer hover:bg-[#131F35]' : 'hover:bg-[#111D33]/60'
+                }`}
+              >
                 {columns.map((col, colIdx) => (
-                  <td key={colIdx} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {col.render ? col.render(row) : row[col.accessor]}
+                  <td
+                    key={colIdx}
+                    className={`px-4 sm:px-5 py-3.5 whitespace-nowrap text-xs text-slate-200 ${
+                      col.align === 'right'
+                        ? 'text-right'
+                        : col.align === 'center'
+                        ? 'text-center'
+                        : 'text-left'
+                    } ${col.cellClassName || ''}`}
+                  >
+                    {col.render ? col.render(row, rowIdx) : row[col.accessor]}
                   </td>
                 ))}
               </tr>

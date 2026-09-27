@@ -1,15 +1,35 @@
 import React from 'react';
 
-export default function LoadingSpinner({ size = 'md', className = '' }) {
+/**
+ * SPIS LoadingSpinner Component
+ * Glowing emerald radar spinner for async data fetching.
+ */
+export default function LoadingSpinner({
+  size = 'md',
+  color = 'border-t-[#00D284]',
+  label,
+  className = '',
+}) {
   const sizes = {
-    sm: 'w-4 h-4',
-    md: 'w-6 h-6',
-    lg: 'w-8 h-8',
+    xs: 'w-3.5 h-3.5 border',
+    sm: 'w-5 h-5 border-2',
+    md: 'w-7 h-7 border-2',
+    lg: 'w-10 h-10 border-[3px]',
+    xl: 'w-14 h-14 border-4',
   };
 
   return (
-    <div className={`flex justify-center items-center ${className}`}>
-      <div className={`${sizes[size] || sizes.md} border-2 border-gray-200 border-t-blue-600 rounded-full animate-spin`} />
+    <div className={`flex flex-col justify-center items-center gap-2.5 ${className}`}>
+      <div
+        className={`${
+          sizes[size] || sizes.md
+        } border-[#172338] ${color} rounded-full animate-spin`}
+      />
+      {label && (
+        <span className="text-xs font-semibold text-slate-400 tracking-wider uppercase animate-pulse">
+          {label}
+        </span>
+      )}
     </div>
   );
 }

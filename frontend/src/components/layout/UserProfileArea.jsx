@@ -35,25 +35,16 @@ export default function UserProfileArea({
   };
 
   return (
-    <div className="relative inline-block" ref={dropdownRef}>
+    <div className="relative flex items-center" ref={dropdownRef}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg border transition-all duration-150 ${
-          isOpen
-            ? 'bg-[#162540] border-[#00D284]/40 text-white'
-            : 'bg-[#0D1527] border-[#172338] text-slate-200 hover:bg-[#131F35] hover:border-[#223654]'
-        }`}
+        className="flex items-center gap-2 px-1 py-1 rounded-lg text-slate-200 hover:text-white transition-colors"
       >
-        <Avatar name={displayName} size="sm" />
-        <div className="hidden md:flex flex-col text-left leading-tight">
-          <span className="text-xs font-semibold text-white tracking-wide">{displayName}</span>
-        </div>
-        <ChevronDown
-          className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${
-            isOpen ? 'rotate-180 text-white' : ''
-          }`}
-        />
+        <Avatar name="RA" size="topbar" />
+        <span className="hidden sm:inline text-sm font-normal text-white tracking-normal whitespace-nowrap">
+          {displayName}
+        </span>
       </button>
 
       {isOpen && (

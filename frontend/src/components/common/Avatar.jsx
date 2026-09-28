@@ -14,6 +14,7 @@ export default function Avatar({
 }) {
   const sizes = {
     xs: 'w-6 h-6 text-[10px]',
+    topbar: 'w-7 h-7 text-xs',
     sm: 'w-8 h-8 text-xs',
     md: 'w-9 h-9 text-xs',
     lg: 'w-11 h-11 text-sm',
@@ -22,6 +23,7 @@ export default function Avatar({
 
   const statusDotSizes = {
     xs: 'w-1.5 h-1.5',
+    topbar: 'w-2 h-2',
     sm: 'w-2 h-2',
     md: 'w-2.5 h-2.5',
     lg: 'w-3 h-3',
@@ -46,13 +48,13 @@ export default function Avatar({
         <img
           src={src}
           alt={alt}
-          className={`${sizes[size] || sizes.md} rounded-full object-cover border border-[#223654] shadow-sm`}
+          className={`${sizes[size] || sizes.md} rounded-full object-cover border border-[#1E2638] shadow-sm`}
         />
       ) : (
         <div
           className={`${
             sizes[size] || sizes.md
-          } rounded-full bg-gradient-to-br from-[#00E590] to-[#00B873] text-[#061510] font-bold flex items-center justify-center tracking-tight shadow-sm select-none border border-emerald-400/40`}
+          } rounded-full bg-[#00BFA5] text-white font-bold flex items-center justify-center tracking-tight select-none`}
         >
           {initials}
         </div>

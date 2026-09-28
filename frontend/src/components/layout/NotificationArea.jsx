@@ -59,29 +59,24 @@ export default function NotificationArea() {
   };
 
   return (
-    <div className="relative inline-block" ref={popoverRef}>
+    <div className="relative flex items-center" ref={popoverRef}>
       {/* Notification Bell Button */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Notifications"
-        className={`relative p-2 rounded-lg transition-all duration-150 border ${
-          isOpen
-            ? 'bg-[#162540] border-[#00D284]/40 text-white'
-            : 'bg-[#0D1527] border-[#172338] text-slate-400 hover:text-white hover:bg-[#131F35] hover:border-[#223654]'
-        }`}
+        className="relative flex h-8 w-8 items-center justify-center text-[#9E9E9E] hover:text-white transition-colors"
       >
-        <Bell className="w-4 h-4" />
+        <Bell className="w-5 h-5" />
+        {/* Unread dot hidden to match the design. To bring it back, use:
         {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#EF4444] text-[9px] font-bold text-white shadow-sm ring-2 ring-[#080D18]">
-            {unreadCount}
-          </span>
-        )}
+          <span className="absolute top-1 right-1.5 flex h-2 w-2 rounded-full bg-[#E74C3C]" />
+        )} */}
       </button>
 
       {/* Popover Dropdown */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl bg-[#0D1527] border border-[#223654] shadow-2xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl bg-[#111827] border border-[#1E2638] shadow-2xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-[#172338] bg-[#0A101D]">
             <div className="flex items-center gap-2">

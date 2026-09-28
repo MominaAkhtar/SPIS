@@ -89,16 +89,16 @@ export default function DateRangePicker({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+        className={`flex h-8 items-center gap-2 px-3 rounded-md text-sm font-medium border transition-colors ${
           isOpen
-            ? 'bg-[#162540] border-[#00D284]/40 text-white'
-            : 'bg-[#0D1527] border-[#172338] text-slate-200 hover:bg-[#131F35] hover:border-[#223654]'
+            ? 'bg-[#262B31] border-[#00BFA5]/40 text-white'
+            : 'bg-[#1E2227] border-[#24272C] text-white hover:bg-[#262B31]'
         }`}
       >
-        <Calendar className="w-3.5 h-3.5 text-[#00D284]" />
-        <span>{currentRange?.label || 'May 8 - May 14, 2025'}</span>
+        <Calendar className="w-4 h-4 text-[#00BFA5]" />
+        <span>{currentRange?.label || 'May 8 – May 14, 2025'}</span>
         <ChevronDown
-          className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${
+          className={`w-4 h-4 text-[#9E9E9E] transition-transform duration-200 ${
             isOpen ? 'rotate-180 text-white' : ''
           }`}
         />
@@ -106,7 +106,7 @@ export default function DateRangePicker({
 
       {/* Popover */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-72 rounded-xl bg-[#0D1527] border border-[#223654] shadow-2xl z-50 p-3 animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="absolute right-0 mt-2 w-72 rounded-xl bg-[#111827] border border-[#1E2638] shadow-2xl z-50 p-3 animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
             Time Window
           </div>

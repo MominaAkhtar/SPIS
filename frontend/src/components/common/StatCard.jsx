@@ -13,21 +13,80 @@ export default function StatCard({
   isPositive,
   trendText,
   icon: Icon,
-  iconColor = 'text-[#00D284]',
-  iconBg = 'bg-[#00D284]/10 border-[#00D284]/20',
+  iconColor = 'text-[#00BFA5]',
+  iconBg = 'bg-[#142222] border-[#00BFA5]/30',
   badge,
-  badgeVariant,
+  changeColor,
   tooltip,
+  layout = 'default',
   className = '',
 }) {
+  if (layout === 'horizontal') {
+    const changeTextColor =
+      changeColor || (isPositive ? 'text-[#2ECC71]' : 'text-[#E74C3C]');
+
+    return (
+      <div
+        className={`bg-[#111827] border border-[#1E2638] hover:border-[#2A3B57] transition-all duration-200 rounded-xl p-4 flex items-center gap-3.5 shadow-sm relative group overflow-hidden ${className}`}
+      >
+        {Icon && (
+          <div
+            className={`w-11 h-11 rounded-lg border ${iconBg} ${iconColor} flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105`}
+          >
+            <Icon className="w-5 h-5" />
+          </div>
+        )}
+
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs text-[#8A94A6] font-normal truncate">
+              {title}
+            </span>
+            {tooltip && (
+              <span title={tooltip} className="text-slate-500 hover:text-slate-300 cursor-help">
+                <Info className="w-3 h-3" />
+              </span>
+            )}
+          </div>
+
+          <div className="mt-0.5 flex items-baseline gap-1">
+            <span className="text-2xl font-bold text-white tracking-tight">
+              {value}
+            </span>
+            {subValue && (
+              <span className="text-base font-bold text-slate-300">
+                {subValue}
+              </span>
+            )}
+          </div>
+
+          {(change !== undefined || trendText) && (
+            <div className="mt-0.5 text-xs truncate">
+              {change !== undefined ? (
+                <span
+                  className={`inline-flex items-center text-xs font-medium ${changeTextColor}`}
+                >
+                  <span className="mr-0.5">{isPositive ? '↑' : '↓'}</span>
+                  {change} {trendText && <span className="ml-1 text-[#8A94A6] font-normal">{trendText}</span>}
+                </span>
+              ) : (
+                <span className="text-[#8A94A6] text-xs">{trendText}</span>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
-      className={`bg-[#0D1527] border border-[#172338] hover:border-[#223654] transition-all duration-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm relative group overflow-hidden ${className}`}
+      className={`bg-[#111827] border border-[#1E2638] hover:border-[#2A3B57] transition-all duration-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm relative group overflow-hidden ${className}`}
     >
       {/* Top row: Label & Icon / Badge */}
       <div className="flex items-start justify-between gap-2 mb-2">
         <div className="flex items-center gap-1.5 min-w-0">
-          <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider truncate">
+          <span className="text-[11px] font-semibold text-[#8A94A6] uppercase tracking-wider truncate">
             {title}
           </span>
           {tooltip && (
@@ -58,7 +117,7 @@ export default function StatCard({
           {value}
         </span>
         {subValue && (
-          <span className="text-xs text-slate-400 font-medium font-mono-numbers">
+          <span className="text-xs text-[#8A94A6] font-medium font-mono-numbers">
             {subValue}
           </span>
         )}
@@ -66,12 +125,12 @@ export default function StatCard({
 
       {/* Bottom row: Trend indicator or subtext */}
       {(change !== undefined || trendText) && (
-        <div className="mt-2.5 pt-2 border-t border-[#172338]/60 flex items-center justify-between text-xs">
+        <div className="mt-2.5 pt-2 border-t border-[#1E2638] flex items-center justify-between text-xs">
           {change !== undefined ? (
             <div className="flex items-center gap-1">
               <span
                 className={`inline-flex items-center text-[11px] font-semibold ${
-                  isPositive ? 'text-[#00D284]' : 'text-rose-400'
+                  isPositive ? 'text-[#2ECC71]' : 'text-[#E74C3C]'
                 }`}
               >
                 {isPositive ? (
@@ -81,10 +140,10 @@ export default function StatCard({
                 )}
                 {change}
               </span>
-              {trendText && <span className="text-slate-500 text-[10px] truncate">{trendText}</span>}
+              {trendText && <span className="text-[#8A94A6] text-[10px] truncate">{trendText}</span>}
             </div>
           ) : (
-            trendText && <span className="text-slate-400 text-[11px] truncate">{trendText}</span>
+            trendText && <span className="text-[#8A94A6] text-[11px] truncate">{trendText}</span>
           )}
         </div>
       )}

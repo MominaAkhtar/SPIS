@@ -15,8 +15,8 @@ export default function Tabs({
 }) {
   if (variant === 'underline') {
     return (
-      <div className={`border-b border-[#172338] ${className}`}>
-        <nav className="-mb-px flex space-x-6 overflow-x-auto">
+      <div className={`border-b border-[#1E2638] ${className}`}>
+        <nav className="-mb-px flex space-x-3.5 overflow-x-auto">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             const content = (
@@ -26,7 +26,7 @@ export default function Tabs({
                 {tab.count !== undefined && (
                   <span
                     className={`ml-2 px-1.5 py-0.5 text-[10px] rounded-full ${
-                      isActive ? 'bg-[#00D284]/20 text-[#00D284]' : 'bg-[#172338] text-slate-400'
+                      isActive ? 'bg-[#00BFA5]/20 text-[#00BFA5]' : 'bg-[#1E2638] text-slate-400'
                     }`}
                   >
                     {tab.count}
@@ -40,10 +40,10 @@ export default function Tabs({
                 <Link
                   key={tab.id}
                   to={tab.to}
-                  className={`py-3 px-1 border-b-2 font-medium text-xs whitespace-nowrap transition-colors flex items-center ${
+                  className={`py-3 px-1 border-b-2 text-sm whitespace-nowrap transition-all flex items-center ${
                     isActive
-                      ? 'border-[#00D284] text-[#00D284]'
-                      : 'border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                      ? 'border-[#00BFA5] text-[#00BFA5] font-semibold'
+                      : 'border-transparent text-[#8A94A6] hover:text-white'
                   }`}
                 >
                   {content}
@@ -56,10 +56,10 @@ export default function Tabs({
                 key={tab.id}
                 type="button"
                 onClick={() => onTabChange?.(tab.id)}
-                className={`py-3 px-1 border-b-2 font-medium text-xs whitespace-nowrap transition-colors flex items-center ${
+                className={`py-3 px-1 border-b-2 text-sm whitespace-nowrap transition-all flex items-center ${
                   isActive
-                    ? 'border-[#00D284] text-[#00D284]'
-                    : 'border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                    ? 'border-[#00BFA5] text-[#00BFA5] font-semibold'
+                    : 'border-transparent text-[#8A94A6] hover:text-white'
                 }`}
               >
                 {content}

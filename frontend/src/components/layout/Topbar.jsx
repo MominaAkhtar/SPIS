@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Filter, Search, Menu, Bell } from 'lucide-react';
+import { Filter, Search, Menu } from 'lucide-react';
 import Breadcrumb from './Breadcrumb';
 import DateRangePicker from '../common/DateRangePicker';
 import NotificationArea from './NotificationArea';
 import UserProfileArea from './UserProfileArea';
 import Modal from '../common/Modal';
 import SearchInput from '../common/SearchInput';
-import { ROUTES } from '../../constants/routes';
 
 /**
  * SPIS Topbar (Header) Component
@@ -23,68 +22,20 @@ export default function Topbar({
   onToggleSidebar,
   filterActive = false,
   onToggleFilter,
-  minimal = false,
 }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  if (minimal) {
-    return (
-      <header className="h-14 sm:h-16 flex items-center justify-between px-6 sm:px-10 z-30 flex-shrink-0 bg-transparent select-none">
-        {/* Left Section: Breadcrumbs */}
-        <div className="flex items-center min-w-0">
-          <Breadcrumb
-            items={
-              breadcrumbs || [
-                { label: 'Home', to: ROUTES?.DASHBOARD || '/dashboard' },
-                { label: 'TOPIC MONITORING' },
-              ]
-            }
-          />
-        </div>
-
-        {/* Right Section: Search, Bell, RA Avatar, Researcher Analyst */}
-        <div className="flex items-center gap-4 sm:gap-5 flex-shrink-0">
-          <button
-            type="button"
-            onClick={() => setIsSearchOpen(true)}
-            aria-label="Search"
-            className="text-slate-400 hover:text-white transition-colors p-1"
-          >
-            <Search className="w-4 h-4" />
-          </button>
-
-          <button
-            type="button"
-            aria-label="Notifications"
-            className="text-slate-400 hover:text-white transition-colors p-1"
-          >
-            <Bell className="w-4 h-4" />
-          </button>
-
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-[#00BFA5] text-[#000000] font-bold text-xs flex items-center justify-center select-none shadow-sm">
-              RA
-            </div>
-            <span className="text-xs sm:text-[13px] font-medium text-slate-200">
-              Researcher Analyst
-            </span>
-          </div>
-        </div>
-      </header>
-    );
-  }
-
   return (
     <>
-      <header className="h-16 bg-[#080D18] border-b border-[#172338] flex items-center justify-between px-4 sm:px-6 sticky top-0 z-30 flex-shrink-0">
+      <header className="h-16 bg-[#0B0F19] flex items-center justify-between px-4 sm:px-6 lg:px-8 sticky top-0 z-30 flex-shrink-0">
         {/* Left Section: Mobile Menu + Breadcrumbs */}
         <div className="flex items-center gap-3 min-w-0">
           {onToggleSidebar && (
             <button
               type="button"
               onClick={onToggleSidebar}
-              className="lg:hidden p-1.5 rounded-lg bg-[#0D1527] border border-[#172338] text-slate-400 hover:text-white"
+              className="lg:hidden p-1.5 rounded-lg bg-[#111827] border border-[#1E2638] text-slate-400 hover:text-white"
               aria-label="Toggle navigation"
             >
               <Menu className="w-4 h-4" />
@@ -94,24 +45,24 @@ export default function Topbar({
           <Breadcrumb items={breadcrumbs} />
         </div>
 
-        {/* Right Section: Time window, Filters, Search, Alerts, Profile */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          {/* Date Range Selector */}
-          <div className="hidden sm:block">
-            <DateRangePicker />
-          </div>
+        {/* Middle Section: Date Range Selector (centered between left and right groups) */}
+        <div className="hidden sm:block">
+          <DateRangePicker />
+        </div>
 
+        {/* Right Section: Filters, Search, Alerts, Profile */}
+        <div className="flex items-center gap-3 flex-shrink-0">
           {/* Filter Button */}
           <button
             type="button"
             onClick={onToggleFilter}
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+            className={`flex h-8 items-center gap-1.5 px-3 rounded-md text-sm font-semibold border transition-colors ${
               filterActive
-                ? 'bg-[#00D284]/15 border-[#00D284] text-[#00D284]'
-                : 'bg-[#0D1527] border-[#172338] text-slate-300 hover:text-white hover:bg-[#131F35] hover:border-[#223654]'
+                ? 'bg-[#00BFA5]/15 border-[#00BFA5] text-[#00BFA5]'
+                : 'bg-[#1E2227] border-[#24272C] text-white hover:bg-[#262B31]'
             }`}
           >
-            <Filter className="w-3.5 h-3.5 text-slate-400" />
+            <Filter className="w-4 h-4" />
             <span className="hidden md:inline">Filters</span>
           </button>
 
@@ -120,9 +71,9 @@ export default function Topbar({
             type="button"
             onClick={() => setIsSearchOpen(true)}
             aria-label="Global search"
-            className="p-2 rounded-lg bg-[#0D1527] border border-[#172338] text-slate-400 hover:text-white hover:bg-[#131F35] hover:border-[#223654] transition-colors"
+            className="flex h-8 w-8 items-center justify-center text-[#9E9E9E] hover:text-white transition-colors"
           >
-            <Search className="w-4 h-4" />
+            <Search className="w-5 h-5" />
           </button>
 
           {/* Notification Alert Area */}

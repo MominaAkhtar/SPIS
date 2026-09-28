@@ -72,11 +72,6 @@ export default function NotificationArea() {
         }`}
       >
         <Bell className="w-4 h-4" />
-        {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#EF4444] text-[9px] font-bold text-white shadow-sm ring-2 ring-[#080D18]">
-            {unreadCount}
-          </span>
-        )}
       </button>
 
       {/* Popover Dropdown */}

@@ -4,6 +4,8 @@ import { ArrowUpRight, ArrowDownRight, Info } from 'lucide-react';
 /**
  * SPIS StatCard Component
  * Metric/KPI card appearing across Dashboard, Network Analysis, Content Analysis, and Alerts screens.
+ * layout="horizontal" → icon left, content right (Network Analysis metric cards)
+ * layout="vertical"   → icon top-right, content below (default)
  */
 export default function StatCard({
   title,
@@ -18,8 +20,75 @@ export default function StatCard({
   badge,
   badgeVariant,
   tooltip,
+  layout = 'vertical',
   className = '',
 }) {
+  if (layout === 'horizontal') {
+    return (
+      <div
+        className={`bg-[#0D1527] border border-[#172338] hover:border-[#223654] transition-all duration-200 rounded-xl p-4 flex items-center gap-3 shadow-sm relative group ${className}`}
+      >
+        {/* Icon — left side */}
+        {Icon && (
+          <div
+            className={`p-2.5 rounded-xl border ${iconBg} ${iconColor} flex-shrink-0 transition-transform group-hover:scale-105`}
+          >
+            <Icon className="w-5 h-5" />
+          </div>
+        )}
+
+        {/* Content — right of icon */}
+        <div className="flex flex-col flex-1">
+          {/* Title — sentence case, no truncation */}
+          <div className="flex items-center gap-1 mb-0.5">
+            <span className="text-xs font-medium text-slate-400 whitespace-nowrap">
+              {title}
+            </span>
+            {tooltip && (
+              <span title={tooltip} className="text-slate-500 hover:text-slate-300 cursor-help flex-shrink-0">
+                <Info className="w-3 h-3" />
+              </span>
+            )}
+          </div>
+
+          {/* Value */}
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-2xl font-extrabold text-white tracking-tight">
+              {value}
+            </span>
+            {subValue && (
+              <span className="text-xs text-slate-400 font-medium">{subValue}</span>
+            )}
+          </div>
+
+          {/* Trend */}
+          {(change !== undefined || trendText) && (
+            <div className="mt-0.5 flex items-center gap-1">
+              {change !== undefined && (
+                <span
+                  className={`inline-flex items-center text-[11px] font-semibold ${
+                    isPositive ? 'text-[#2ECC71]' : 'text-rose-400'
+                  }`}
+                >
+                  {isPositive ? (
+                    <ArrowUpRight className="w-3 h-3 mr-0.5" />
+                  ) : (
+                    <ArrowDownRight className="w-3 h-3 mr-0.5" />
+                  )}
+                  {change}
+                </span>
+              )}
+              {trendText && (
+                <span className="text-slate-500 text-[10px] whitespace-nowrap">{trendText}</span>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // Default vertical layout
   return (
     <div
       className={`bg-[#0D1527] border border-[#172338] hover:border-[#223654] transition-all duration-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm relative group overflow-hidden ${className}`}
@@ -46,9 +115,7 @@ export default function StatCard({
         )}
 
         {badge && (
-          <div className="flex-shrink-0">
-            {badge}
-          </div>
+          <div className="flex-shrink-0">{badge}</div>
         )}
       </div>
 

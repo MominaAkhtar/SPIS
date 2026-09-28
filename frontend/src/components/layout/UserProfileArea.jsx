@@ -49,11 +49,6 @@ export default function UserProfileArea({
         <div className="hidden md:flex flex-col text-left leading-tight">
           <span className="text-xs font-semibold text-white tracking-wide">{displayName}</span>
         </div>
-        <ChevronDown
-          className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${
-            isOpen ? 'rotate-180 text-white' : ''
-          }`}
-        />
       </button>
 
       {isOpen && (

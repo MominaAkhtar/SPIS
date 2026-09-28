@@ -48,7 +48,7 @@ export default function ForgotPasswordModal({ isOpen, onClose, defaultEmail = ''
     >
       {submitted ? (
         <div className="py-4 text-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-[#00D284]/10 text-[#00D284] flex items-center justify-center mx-auto">
+          <div className="w-12 h-12 rounded-full bg-[#00BFA5]/10 text-[#00BFA5] flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-6 h-6" />
           </div>
           <h4 className="text-sm font-semibold text-white">

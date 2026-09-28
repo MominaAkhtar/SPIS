@@ -63,9 +63,9 @@ export default function Sidebar({ onCloseMobile }) {
 
   return (
     <>
-      <aside className="w-64 bg-[#080D18] border-r border-[#172338] text-slate-100 min-h-screen flex flex-col flex-shrink-0 select-none">
+      <aside className="w-64 bg-[#0D111E] border-r border-[#1B2638] text-slate-100 min-h-screen flex flex-col flex-shrink-0 select-none">
         {/* Brand Header */}
-        <div className="h-16 px-5 border-b border-[#172338] flex items-center justify-between">
+        <div className="h-16 px-5 border-b border-[#1B2638] flex items-center justify-between">
           <Logo variant="horizontal" size="sm" showSubtitle={true} />
           {onCloseMobile && (
             <button
@@ -91,8 +91,8 @@ export default function Sidebar({ onCloseMobile }) {
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
                     isActive
-                      ? 'bg-[#00D284]/10 text-[#00D284] border-l-2 border-[#00D284] shadow-sm shadow-[#00D284]/10'
-                      : 'text-slate-400 hover:text-slate-100 hover:bg-[#111D33] border-l-2 border-transparent'
+                      ? 'bg-[#00BFA5]/10 text-[#00BFA5] border-l-2 border-[#00BFA5] shadow-sm shadow-[#00BFA5]/10'
+                      : 'text-slate-400 hover:text-slate-100 hover:bg-[#152033] border-l-2 border-transparent'
                   }`
                 }
               >
@@ -100,7 +100,7 @@ export default function Sidebar({ onCloseMobile }) {
                   <>
                     <Icon
                       className={`w-4 h-4 flex-shrink-0 ${
-                        isActive ? 'text-[#00D284]' : 'text-slate-400'
+                        isActive ? 'text-[#00BFA5]' : 'text-slate-400'
                       }`}
                     />
                     <span className="truncate">{item.label}</span>
@@ -112,13 +112,13 @@ export default function Sidebar({ onCloseMobile }) {
         </nav>
 
         {/* Bottom Section: Current Topic Card */}
-        <div className="p-3 border-t border-[#172338] space-y-3 bg-[#070B14]">
+        <div className="p-3 border-t border-[#1B2638] space-y-3 bg-[#070B14]">
           {/* Current Topic Indicator Widget */}
-          <div className="p-3 rounded-xl bg-[#0D1527] border border-[#172338] relative overflow-hidden group">
+          <div className="p-3 rounded-xl bg-[#111827] border border-[#1B2638] relative overflow-hidden group">
             <div className="flex items-center gap-2 mb-1.5">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D284] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00D284]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00BFA5] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BFA5]"></span>
               </span>
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                 Current Topic
@@ -132,7 +132,7 @@ export default function Sidebar({ onCloseMobile }) {
             <button
               type="button"
               onClick={() => setIsTopicModalOpen(true)}
-              className="mt-2 text-[11px] font-semibold text-[#00D284] hover:text-[#05DF8E] transition-colors flex items-center gap-1 group-hover:underline"
+              className="mt-2 text-[11px] font-semibold text-[#00BFA5] hover:text-[#2DCCA7] transition-colors flex items-center gap-1 group-hover:underline"
             >
               <span>Change Topic</span>
             </button>

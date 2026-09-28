@@ -38,10 +38,10 @@ export default function Modal({
       <div
         role="dialog"
         aria-modal="true"
-        className={`relative w-full ${maxWidth} rounded-2xl bg-[#0D1527] border border-[#223654] shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200`}
+        className={`relative w-full ${maxWidth} rounded-2xl bg-[#111827] border border-[#263954] shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#172338] bg-[#0A101D]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#1B2638] bg-[#0A101D]">
           <div>
             <h3 className="text-base font-bold text-white tracking-wide">{title}</h3>
             {subtitle && (
@@ -51,7 +51,7 @@ export default function Modal({
           <button
             type="button"
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-[#162540] transition-colors"
+            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-[#1A2840] transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -62,7 +62,7 @@ export default function Modal({
 
         {/* Footer */}
         {footer && (
-          <div className="px-6 py-3.5 border-t border-[#172338] bg-[#0A101D] flex items-center justify-end gap-2.5">
+          <div className="px-6 py-3.5 border-t border-[#1B2638] bg-[#0A101D] flex items-center justify-end gap-2.5">
             {footer}
           </div>
         )}

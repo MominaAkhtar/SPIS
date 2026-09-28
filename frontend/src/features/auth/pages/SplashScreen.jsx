@@ -29,9 +29,9 @@ export default function SplashScreen({ onComplete, autoRedirect = true }) {
   }, [navigate, onComplete, autoRedirect]);
 
   return (
-    <div className="min-h-screen w-full bg-[#060B13] flex flex-col items-center justify-between py-12 px-4 select-none relative overflow-hidden">
+    <div className="min-h-screen w-full bg-[#0B0F19] flex flex-col items-center justify-between py-12 px-4 select-none relative overflow-hidden">
       {/* Background Cyber Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#00D284]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#00BFA5]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Empty top spacer for centering */}
       <div className="h-6" />
@@ -42,9 +42,9 @@ export default function SplashScreen({ onComplete, autoRedirect = true }) {
 
         {/* Progress Bar Container */}
         <div className="w-64 sm:w-72 mt-12 mb-3">
-          <div className="w-full h-1 bg-[#111D33] rounded-full overflow-hidden relative">
+          <div className="w-full h-1 bg-[#152033] rounded-full overflow-hidden relative">
             <div
-              className="h-full bg-gradient-to-r from-[#00D284] to-[#00C7FF] transition-all duration-200 rounded-full shadow-[0_0_12px_rgba(0,210,132,0.8)]"
+              className="h-full bg-gradient-to-r from-[#00BFA5] to-[#00C7FF] transition-all duration-200 rounded-full shadow-[0_0_12px_rgba(0,210,132,0.8)]"
               style={{ width: `${progress}%` }}
             />
           </div>

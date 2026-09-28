@@ -113,7 +113,7 @@ export default function AlertsPredictionsPage() {
                 <Download className="w-4 h-4 text-[#061510]" />
               )
             }
-            className="font-bold shadow-md shadow-[#00D284]/20"
+            className="font-bold shadow-md shadow-[#00BFA5]/20"
           >
             {exportSuccess ? 'Report Ready' : 'Export Report'}
           </Button>
@@ -123,7 +123,7 @@ export default function AlertsPredictionsPage() {
       {/* Top 4 Anomaly & Prediction KPI Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {/* Card 1: CURRENT POLARIZATION LEVEL */}
-        <div className="bg-[#0D1527] border border-[#172338] hover:border-[#223654] transition-all rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-card">
+        <div className="bg-[#111827] border border-[#1B2638] hover:border-[#263954] transition-all rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-card">
           <div className="flex items-start justify-between gap-2">
             <div className="flex items-center gap-1.5">
               <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
@@ -146,14 +146,14 @@ export default function AlertsPredictionsPage() {
             </div>
             <CircularProgress
               value={72}
-              color="#00D284"
-              trackColor="#111D33"
+              color="#00BFA5"
+              trackColor="#152033"
               size={52}
               strokeWidth={4.5}
             />
           </div>
 
-          <div className="mt-2.5 pt-2 border-t border-[#172338]/60 flex items-center text-xs">
+          <div className="mt-2.5 pt-2 border-t border-[#1B2638]/60 flex items-center text-xs">
             <span className="inline-flex items-center text-[11px] font-semibold text-rose-400">
               <ArrowUpRight className="w-3 h-3 mr-0.5" />
               18% from last week
@@ -162,7 +162,7 @@ export default function AlertsPredictionsPage() {
         </div>
 
         {/* Card 2: PREDICTION (NEXT 7 DAYS) */}
-        <div className="bg-[#0D1527] border border-[#172338] hover:border-[#223654] transition-all rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-card">
+        <div className="bg-[#111827] border border-[#1B2638] hover:border-[#263954] transition-all rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-card">
           <div className="flex items-start justify-between gap-2">
             <div className="flex items-center gap-1.5">
               <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
@@ -191,7 +191,7 @@ export default function AlertsPredictionsPage() {
             />
           </div>
 
-          <div className="mt-2.5 pt-2 border-t border-[#172338]/60 flex items-center text-xs">
+          <div className="mt-2.5 pt-2 border-t border-[#1B2638]/60 flex items-center text-xs">
             <span className="inline-flex items-center text-[11px] font-semibold text-rose-400">
               <ArrowUpRight className="w-3 h-3 mr-0.5" />
               6% projected increase
@@ -200,7 +200,7 @@ export default function AlertsPredictionsPage() {
         </div>
 
         {/* Card 3: ACTIVE ALERTS */}
-        <div className="bg-[#0D1527] border border-[#172338] hover:border-[#223654] transition-all rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-card">
+        <div className="bg-[#111827] border border-[#1B2638] hover:border-[#263954] transition-all rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-card">
           <div className="flex items-start justify-between gap-2">
             <div className="flex items-center gap-1.5">
               <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
@@ -221,7 +221,7 @@ export default function AlertsPredictionsPage() {
             </span>
           </div>
 
-          <div className="mt-2.5 pt-2 border-t border-[#172338]/60 flex items-center gap-2 text-xs">
+          <div className="mt-2.5 pt-2 border-t border-[#1B2638]/60 flex items-center gap-2 text-xs">
             <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-rose-500/15 text-rose-300 border border-rose-500/30 flex items-center gap-1 font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
               4 Critical
@@ -234,7 +234,7 @@ export default function AlertsPredictionsPage() {
         </div>
 
         {/* Card 4: AFFECTED COMMUNITIES */}
-        <div className="bg-[#0D1527] border border-[#172338] hover:border-[#223654] transition-all rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-card">
+        <div className="bg-[#111827] border border-[#1B2638] hover:border-[#263954] transition-all rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-card">
           <div className="flex items-start justify-between gap-2">
             <div className="flex items-center gap-1.5">
               <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
@@ -255,7 +255,7 @@ export default function AlertsPredictionsPage() {
             </p>
           </div>
 
-          <div className="mt-2.5 pt-2 border-t border-[#172338]/60 flex items-center text-xs">
+          <div className="mt-2.5 pt-2 border-t border-[#1B2638]/60 flex items-center text-xs">
             <span className="inline-flex items-center text-[11px] font-semibold text-rose-400">
               <ArrowUpRight className="w-3 h-3 mr-0.5" />
               3 New detected
@@ -278,7 +278,7 @@ export default function AlertsPredictionsPage() {
                   <span className="text-slate-400 text-[11px]">Actual Polarization</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-0.5 border-t border-dashed border-[#00D284] inline-block" />
+                  <span className="w-3 h-0.5 border-t border-dashed border-[#00BFA5] inline-block" />
                   <span className="text-slate-400 text-[11px]">Predicted Risk / Forecast</span>
                 </div>
               </div>
@@ -299,7 +299,7 @@ export default function AlertsPredictionsPage() {
                 {
                   key: 'predicted',
                   name: 'Predicted Risk / Forecast',
-                  color: '#00D284',
+                  color: '#00BFA5',
                   isDashed: true,
                   strokeDasharray: '4 4',
                   showDots: true,
@@ -329,7 +329,7 @@ export default function AlertsPredictionsPage() {
             action={
               <button
                 type="button"
-                className="text-xs text-[#00D284] hover:text-[#20E29B] font-semibold transition-colors hover:underline"
+                className="text-xs text-[#00BFA5] hover:text-[#2DCCA7] font-semibold transition-colors hover:underline"
               >
                 View All →
               </button>
@@ -353,7 +353,7 @@ export default function AlertsPredictionsPage() {
             <button
               type="button"
               onClick={() => setIsPreferencesOpen(true)}
-              className="w-full mt-4 py-2.5 px-4 rounded-lg bg-[#111D33] hover:bg-[#162540] border border-[#1E2D48] hover:border-[#2D4369] text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all duration-150 select-none shadow-sm"
+              className="w-full mt-4 py-2.5 px-4 rounded-lg bg-[#152033] hover:bg-[#1A2840] border border-[#1E2D48] hover:border-[#2D4369] text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all duration-150 select-none shadow-sm"
             >
               <Sliders className="w-3.5 h-3.5 text-slate-400" />
               <span>Configure Alert Preferences</span>
@@ -379,7 +379,7 @@ export default function AlertsPredictionsPage() {
           action={
             <button
               type="button"
-              className="text-xs text-[#00D284] hover:text-[#20E29B] font-semibold transition-colors hover:underline"
+              className="text-xs text-[#00BFA5] hover:text-[#2DCCA7] font-semibold transition-colors hover:underline"
             >
               View All
             </button>

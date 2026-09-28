@@ -28,14 +28,14 @@ export default function Topbar({
 
   return (
     <>
-      <header className="h-16 bg-[#080D18] border-b border-[#172338] flex items-center justify-between px-4 sm:px-6 sticky top-0 z-30 flex-shrink-0">
+      <header className="h-16 bg-[#0D111E] border-b border-[#1B2638] flex items-center justify-between px-4 sm:px-6 sticky top-0 z-30 flex-shrink-0">
         {/* Left Section: Mobile Menu + Breadcrumbs */}
         <div className="flex items-center gap-3 min-w-0">
           {onToggleSidebar && (
             <button
               type="button"
               onClick={onToggleSidebar}
-              className="lg:hidden p-1.5 rounded-lg bg-[#0D1527] border border-[#172338] text-slate-400 hover:text-white"
+              className="lg:hidden p-1.5 rounded-lg bg-[#111827] border border-[#1B2638] text-slate-400 hover:text-white"
               aria-label="Toggle navigation"
             >
               <Menu className="w-4 h-4" />
@@ -58,8 +58,8 @@ export default function Topbar({
             onClick={onToggleFilter}
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-all ${
               filterActive
-                ? 'bg-[#00D284]/15 border-[#00D284] text-[#00D284]'
-                : 'bg-[#0D1527] border-[#172338] text-slate-300 hover:text-white hover:bg-[#131F35] hover:border-[#223654]'
+                ? 'bg-[#00BFA5]/15 border-[#00BFA5] text-[#00BFA5]'
+                : 'bg-[#111827] border-[#1B2638] text-slate-300 hover:text-white hover:bg-[#131F35] hover:border-[#263954]'
             }`}
           >
             <Filter className="w-3.5 h-3.5 text-slate-400" />
@@ -71,7 +71,7 @@ export default function Topbar({
             type="button"
             onClick={() => setIsSearchOpen(true)}
             aria-label="Global search"
-            className="p-2 rounded-lg bg-[#0D1527] border border-[#172338] text-slate-400 hover:text-white hover:bg-[#131F35] hover:border-[#223654] transition-colors"
+            className="p-2 rounded-lg bg-[#111827] border border-[#1B2638] text-slate-400 hover:text-white hover:bg-[#131F35] hover:border-[#263954] transition-colors"
           >
             <Search className="w-4 h-4" />
           </button>
@@ -110,7 +110,7 @@ export default function Topbar({
                     key={idx}
                     type="button"
                     onClick={() => setSearchQuery(item)}
-                    className="px-2.5 py-1 rounded bg-[#111D33] border border-[#1E2D48] text-slate-300 hover:text-[#00D284] hover:border-[#00D284]/40 transition-colors"
+                    className="px-2.5 py-1 rounded bg-[#152033] border border-[#1E2D48] text-slate-300 hover:text-[#00BFA5] hover:border-[#00BFA5]/40 transition-colors"
                   >
                     {item}
                   </button>

@@ -17,8 +17,8 @@ export default function PredictionInsightsList({
     },
     {
       id: 3,
-      icon: <Lightbulb className="w-4 h-4 text-[#00D284]" />,
-      iconBg: 'bg-[#00D284]/10 border-[#00D284]/20',
+      icon: <Lightbulb className="w-4 h-4 text-[#00BFA5]" />,
+      iconBg: 'bg-[#00BFA5]/10 border-[#00BFA5]/20',
       text: 'Timely interventions can reduce predicted polarization by up to 15%.',
     },
   ],
@@ -29,7 +29,7 @@ export default function PredictionInsightsList({
       {insights.map((item) => (
         <div
           key={item.id}
-          className="p-3 rounded-xl bg-[#09101C] border border-[#172338] hover:border-[#223654] transition-all flex items-start gap-3 select-none"
+          className="p-3 rounded-xl bg-[#111416] border border-[#1B2638] hover:border-[#263954] transition-all flex items-start gap-3 select-none"
         >
           <div
             className={`p-2 rounded-lg border ${item.iconBg} flex-shrink-0 mt-0.5`}

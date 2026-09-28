@@ -17,12 +17,12 @@ export default function Card({
 }) {
   return (
     <div
-      className={`bg-[#0D1527] border border-[#172338] rounded-xl shadow-card transition-all duration-200 overflow-hidden ${className}`}
+      className={`bg-[#111827] border border-[#1B2638] rounded-xl shadow-card transition-all duration-200 overflow-hidden ${className}`}
     >
       {(title || action || subtitle) && (
         <div
           className={`flex items-center justify-between px-5 py-4 ${
-            headerBorder ? 'border-b border-[#172338] bg-[#0A101D]' : ''
+            headerBorder ? 'border-b border-[#1B2638] bg-[#0A101D]' : ''
           }`}
         >
           <div className="flex items-center gap-2 min-w-0">

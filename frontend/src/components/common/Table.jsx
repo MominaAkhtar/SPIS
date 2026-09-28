@@ -13,8 +13,8 @@ export default function Table({
   onRowClick,
 }) {
   return (
-    <div className={`overflow-x-auto rounded-xl border border-[#172338] bg-[#0D1527] ${className}`}>
-      <table className="min-w-full divide-y divide-[#172338]">
+    <div className={`overflow-x-auto rounded-xl border border-[#1B2638] bg-[#111827] ${className}`}>
+      <table className="min-w-full divide-y divide-[#1B2638]">
         <thead className="bg-[#0A101D]">
           <tr>
             {columns.map((col, idx) => (
@@ -33,7 +33,7 @@ export default function Table({
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-[#172338]/70">
+        <tbody className="divide-y divide-[#1B2638]/70">
           {data.length === 0 ? (
             <tr>
               <td
@@ -49,7 +49,7 @@ export default function Table({
                 key={row[keyField] || rowIdx}
                 onClick={() => onRowClick?.(row)}
                 className={`transition-colors ${
-                  onRowClick ? 'cursor-pointer hover:bg-[#131F35]' : 'hover:bg-[#111D33]/60'
+                  onRowClick ? 'cursor-pointer hover:bg-[#131F35]' : 'hover:bg-[#152033]/60'
                 }`}
               >
                 {columns.map((col, colIdx) => (

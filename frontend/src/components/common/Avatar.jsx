@@ -46,7 +46,7 @@ export default function Avatar({
         <img
           src={src}
           alt={alt}
-          className={`${sizes[size] || sizes.md} rounded-full object-cover border border-[#223654] shadow-sm`}
+          className={`${sizes[size] || sizes.md} rounded-full object-cover border border-[#263954] shadow-sm`}
         />
       ) : (
         <div
@@ -62,9 +62,9 @@ export default function Avatar({
         <span
           className={`absolute bottom-0 right-0 ${
             statusDotSizes[size] || statusDotSizes.md
-          } rounded-full border-2 border-[#080D18] ${
+          } rounded-full border-2 border-[#0D111E] ${
             status === 'online'
-              ? 'bg-[#00D284]'
+              ? 'bg-[#00BFA5]'
               : status === 'busy'
               ? 'bg-[#EF4444]'
               : 'bg-slate-500'

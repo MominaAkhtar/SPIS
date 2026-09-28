@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Plus, Minus, Lock, Unlock, Maximize2 } from 'lucide-react';
 
 /**
  * SPIS NetworkGraph Component
@@ -256,14 +257,22 @@ export default function NetworkGraph({
   height = 420,
   fill = false, // when true the canvas stretches to fill its parent's height (no bottom gap)
   showLegend = true,
+  showLabels = false,
+  showControls = false,
   onNodeClick,
   className = '',
 }) {
   const [hoveredNode, setHoveredNode] = useState(null);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const [isLocked, setIsLocked] = useState(false);
 
   const defaultData = React.useMemo(() => generateDefaultGraph(), []);
   const nodes = customNodes && customNodes.length > 0 ? customNodes : defaultData.nodes;
   const links = customLinks && customLinks.length > 0 ? customLinks : defaultData.links;
+
+  const handleZoomIn = () => setZoomLevel((z) => Math.min(Number((z + 0.2).toFixed(1)), 2.0));
+  const handleZoomOut = () => setZoomLevel((z) => Math.max(Number((z - 0.2).toFixed(1)), 0.6));
+  const handleResetZoom = () => setZoomLevel(1);
 
   return (
     <div className={`relative w-full flex flex-col select-none ${fill ? 'h-full flex-1 min-h-0' : ''} ${className}`}>
@@ -272,6 +281,46 @@ export default function NetworkGraph({
         className={`w-full relative overflow-hidden rounded-lg bg-[#15181C] ${fill ? 'flex-1 min-h-[340px]' : ''}`}
         style={fill ? undefined : { height }}
       >
+        {/* Floating Zoom & Lock Controls */}
+        {showControls && (
+          <div className="absolute top-3 right-3 z-20 flex flex-col items-center bg-[#111827]/90 backdrop-blur border border-[#1E2638] rounded-md p-0.5 shadow-md gap-0.5 text-[#8A94A6]">
+            <button
+              type="button"
+              title="Reset Zoom"
+              onClick={handleResetZoom}
+              className="p-1.5 hover:text-white hover:bg-[#1E2638] rounded transition-colors"
+            >
+              <Maximize2 className="w-3.5 h-3.5" />
+            </button>
+            <button
+              type="button"
+              title="Zoom In"
+              onClick={handleZoomIn}
+              className="p-1.5 hover:text-white hover:bg-[#1E2638] rounded transition-colors"
+            >
+              <Plus className="w-3.5 h-3.5" />
+            </button>
+            <button
+              type="button"
+              title="Zoom Out"
+              onClick={handleZoomOut}
+              className="p-1.5 hover:text-white hover:bg-[#1E2638] rounded transition-colors"
+            >
+              <Minus className="w-3.5 h-3.5" />
+            </button>
+            <button
+              type="button"
+              title={isLocked ? "Unlock Canvas" : "Lock Canvas"}
+              onClick={() => setIsLocked(!isLocked)}
+              className={`p-1.5 hover:text-white hover:bg-[#1E2638] rounded transition-colors ${
+                isLocked ? 'text-[#00BFA5]' : ''
+              }`}
+            >
+              {isLocked ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
+            </button>
+          </div>
+        )}
+
         <svg
           viewBox="60 30 600 380"
           preserveAspectRatio="xMidYMid meet"
@@ -288,85 +337,120 @@ export default function NetworkGraph({
             </filter>
           </defs>
 
+          <g
+            style={{
+              transform: `scale(${zoomLevel})`,
+              transformOrigin: '360px 220px',
+              transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+            }}
+          >
+            {/* Network Links */}
+            <g className="edges">
+              {links.map((link, idx) => {
+                const isHighlighted =
+                  hoveredNode &&
+                  (hoveredNode.id === link.source || hoveredNode.id === link.target);
 
-          {/* Network Links */}
-          <g className="edges">
-            {links.map((link, idx) => {
-              const isHighlighted =
-                hoveredNode &&
-                (hoveredNode.id === link.source || hoveredNode.id === link.target);
-
-              return (
-                <line
-                  key={`link-${idx}`}
-                  x1={link.x1}
-                  y1={link.y1}
-                  x2={link.x2}
-                  y2={link.y2}
-                  stroke={isHighlighted ? '#00BFA5' : link.color}
-                  strokeWidth={isHighlighted ? 1.8 : link.isBridgeLink ? 1.2 : 0.8}
-                  strokeOpacity={isHighlighted ? 0.9 : link.opacity}
-                  strokeDasharray={link.isBridgeLink ? '3 2' : 'none'}
-                />
-              );
-            })}
-          </g>
-
-        
-
-          {/* Network Nodes */}
-          <g className="nodes">
-            {nodes.map((node) => {
-              const isHovered = hoveredNode?.id === node.id;
-
-              if (node.isBridge) {
                 return (
-                  <g
+                  <line
+                    key={`link-${idx}`}
+                    x1={link.x1}
+                    y1={link.y1}
+                    x2={link.x2}
+                    y2={link.y2}
+                    stroke={isHighlighted ? '#00BFA5' : link.color}
+                    strokeWidth={isHighlighted ? 1.8 : link.isBridgeLink ? 1.2 : 0.8}
+                    strokeOpacity={isHighlighted ? 0.9 : link.opacity}
+                    strokeDasharray={link.isBridgeLink ? '3 2' : 'none'}
+                  />
+                );
+              })}
+            </g>
+
+            {/* Community Clusters Labels */}
+            {showLabels && (
+              <g className="community-labels pointer-events-none select-none">
+                {communities.map((comm) => {
+                  let lx = comm.cx;
+                  let ly = comm.cy - 48;
+                  if (comm.id === 'comm_a') { lx = 210; ly = 96; }
+                  else if (comm.id === 'comm_b') { lx = 520; ly = 88; }
+                  else if (comm.id === 'comm_c') { lx = 225; ly = 372; }
+                  else if (comm.id === 'comm_d') { lx = 535; ly = 345; }
+                  else if (comm.id === 'comm_e') { lx = 395; ly = 195; }
+                  return (
+                    <text
+                      key={`label-${comm.id}`}
+                      x={lx}
+                      y={ly}
+                      fill={comm.color}
+                      fontSize="10"
+                      fontWeight="700"
+                      letterSpacing="0.4"
+                      textAnchor="middle"
+                      opacity="0.9"
+                    >
+                      {comm.name}
+                    </text>
+                  );
+                })}
+              </g>
+            )}
+
+            {/* Network Nodes */}
+            <g className="nodes">
+              {nodes.map((node) => {
+                const isHovered = hoveredNode?.id === node.id;
+
+                if (node.isBridge) {
+                  return (
+                    <g
+                      key={node.id}
+                      className="cursor-pointer"
+                      onMouseEnter={() => setHoveredNode(node)}
+                      onMouseLeave={() => setHoveredNode(null)}
+                      onClick={() => onNodeClick?.(node)}
+                    >
+                      {/* Outer glowing aura */}
+                      <circle
+                        cx={node.x}
+                        cy={node.y}
+                        r={isHovered ? 12 : 8}
+                        fill="#00BFA5"
+                        fillOpacity={isHovered ? 0.45 : 0.25}
+                        filter="url(#bridgeGlow)"
+                      />
+                      {/* Inner core */}
+                      <circle
+                        cx={node.x}
+                        cy={node.y}
+                        r={isHovered ? 5.5 : 4}
+                        fill="#FFFFFF"
+                        stroke="#00BFA5"
+                        strokeWidth="1.8"
+                      />
+                    </g>
+                  );
+                }
+
+                return (
+                  <circle
                     key={node.id}
-                    className="cursor-pointer"
+                    cx={node.x}
+                    cy={node.y}
+                    r={isHovered ? 6 : node.size || 3.5}
+                    fill={node.color}
+                    fillOpacity={isHovered ? 1 : 0.85}
+                    stroke={isHovered ? '#FFFFFF' : 'none'}
+                    strokeWidth="1.2"
+                    className="cursor-pointer transition-all"
                     onMouseEnter={() => setHoveredNode(node)}
                     onMouseLeave={() => setHoveredNode(null)}
                     onClick={() => onNodeClick?.(node)}
-                  >
-                    {/* Outer glowing aura */}
-                    <circle
-                      cx={node.x}
-                      cy={node.y}
-                      r={isHovered ? 12 : 8}
-                      fill="#00BFA5"
-                      fillOpacity={isHovered ? 0.45 : 0.25}
-                      filter="url(#bridgeGlow)"
-                    />
-                    {/* Inner core */}
-                    <circle
-                      cx={node.x}
-                      cy={node.y}
-                      r={isHovered ? 5.5 : 4}
-                      fill="#FFFFFF"
-                      stroke="#00BFA5"
-                      strokeWidth="1.8"
-                    />
-                  </g>
+                  />
                 );
-              }
-
-              return (
-                <circle
-                  key={node.id}
-                  cx={node.x}
-                  cy={node.y}
-                  r={isHovered ? 6 : node.size || 3.5}
-                  fill={node.color}
-                  fillOpacity={isHovered ? 1 : 0.85}
-                  stroke={isHovered ? '#FFFFFF' : 'none'}
-                  strokeWidth="1.2"
-                  className="cursor-pointer transition-all"
-                  onMouseEnter={() => setHoveredNode(node)}
-                  onMouseLeave={() => setHoveredNode(null)}
-                  onClick={() => onNodeClick?.(node)}
-                />
-              );
-            })}
+              })}
+            </g>
           </g>
         </svg>
 

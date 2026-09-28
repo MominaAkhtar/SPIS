@@ -27,6 +27,12 @@ export default function AppRoutes() {
         <Route path="/network%20analysis" element={<NetworkAnalysisPage />} />
         <Route path="/network analysis" element={<NetworkAnalysisPage />} />
         <Route path="/bridge-users" element={<NetworkAnalysisPage />} />
+        <Route path="/network-analysis/echo-chambers" element={<NetworkAnalysisPage />} />
+        <Route path="/network-analysis/echo_chambers" element={<NetworkAnalysisPage />} />
+        <Route path="/echo-chambers" element={<NetworkAnalysisPage />} />
+        <Route path="/network-analysis/interaction-types" element={<NetworkAnalysisPage />} />
+        <Route path="/network-analysis/interactions" element={<NetworkAnalysisPage />} />
+        <Route path="/interaction-types" element={<NetworkAnalysisPage />} />
         <Route path={ROUTES.ALERTS_PREDICTIONS} element={<AlertsPredictionsPage />} />
 
         {/* Fallback to Network Analysis */}

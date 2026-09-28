@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Filter, Search, Menu } from 'lucide-react';
+import { Filter, Search, Menu, Bell } from 'lucide-react';
 import Breadcrumb from './Breadcrumb';
 import DateRangePicker from '../common/DateRangePicker';
 import NotificationArea from './NotificationArea';
 import UserProfileArea from './UserProfileArea';
 import Modal from '../common/Modal';
 import SearchInput from '../common/SearchInput';
+import { ROUTES } from '../../constants/routes';
 
 /**
  * SPIS Topbar (Header) Component
@@ -22,9 +23,57 @@ export default function Topbar({
   onToggleSidebar,
   filterActive = false,
   onToggleFilter,
+  minimal = false,
 }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
+  if (minimal) {
+    return (
+      <header className="h-14 sm:h-16 flex items-center justify-between px-6 sm:px-10 z-30 flex-shrink-0 bg-transparent select-none">
+        {/* Left Section: Breadcrumbs */}
+        <div className="flex items-center min-w-0">
+          <Breadcrumb
+            items={
+              breadcrumbs || [
+                { label: 'Home', to: ROUTES?.DASHBOARD || '/dashboard' },
+                { label: 'TOPIC MONITORING' },
+              ]
+            }
+          />
+        </div>
+
+        {/* Right Section: Search, Bell, RA Avatar, Researcher Analyst */}
+        <div className="flex items-center gap-4 sm:gap-5 flex-shrink-0">
+          <button
+            type="button"
+            onClick={() => setIsSearchOpen(true)}
+            aria-label="Search"
+            className="text-slate-400 hover:text-white transition-colors p-1"
+          >
+            <Search className="w-4 h-4" />
+          </button>
+
+          <button
+            type="button"
+            aria-label="Notifications"
+            className="text-slate-400 hover:text-white transition-colors p-1"
+          >
+            <Bell className="w-4 h-4" />
+          </button>
+
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-full bg-[#00BFA5] text-[#000000] font-bold text-xs flex items-center justify-center select-none shadow-sm">
+              RA
+            </div>
+            <span className="text-xs sm:text-[13px] font-medium text-slate-200">
+              Researcher Analyst
+            </span>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <>

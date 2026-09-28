@@ -18,7 +18,7 @@ export default function SplashLoadingBar({ className = '' }) {
         className="absolute inset-0 rounded-full spis-loading-line-glow"
         style={{
           background:
-            'linear-gradient(90deg, rgba(0, 191, 165, 0) 0%, #00BFA5 50%, rgba(0, 191, 165, 0) 100%)',
+            'linear-gradient(90deg, rgba(0, 191, 165, 0.2) 0%, #00BFA5 50%, rgba(0, 191, 165, 0.2) 100%)',
         }}
       />
 
@@ -28,7 +28,7 @@ export default function SplashLoadingBar({ className = '' }) {
           className="w-full h-full spis-loading-sweep"
           style={{
             background:
-              'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.85) 50%, transparent 100%)',
+              'linear-gradient(90deg, transparent 0%, rgba(45, 204, 167, 0.4) 30%, #FFFFFF 50%, rgba(45, 204, 167, 0.4) 70%, transparent 100%)',
           }}
         />
       </div>

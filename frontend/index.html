@@ -5,8 +5,17 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SPIS - Social Platform Intelligence System</title>
+    <script>
+      window.addEventListener('error', function(e) {
+        var d = document.createElement('div');
+        d.id = 'debug-error';
+        d.style = 'color:red;background:white;font-size:18px;padding:20px;position:fixed;top:0;left:0;z-index:99999;';
+        d.textContent = 'JS ERROR: ' + e.message + ' (' + e.filename + ':' + e.lineno + ')';
+        document.body.appendChild(d);
+      });
+    </script>
   </head>
-  <body class="bg-gray-50 text-gray-900 antialiased">
+  <body class="bg-[#0B0F19] text-[#F8FAFC] antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -72,7 +72,7 @@ export default function Logo({
       {/* compass needle */}
       <g
         className={animated ? 'spis-needle-spin' : undefined}
-        style={animated ? { transformOrigin: '78px 52.7969px' } : undefined}
+        style={animated ? { transformBox: 'view-box', transformOrigin: '78.166px 52.85px' } : undefined}
       >
         <path
           d="M65.1429 63.7779L73.0233 46.7222L91.1884 41.9231L83.3079 58.9789L65.1429 63.7779Z"
@@ -82,9 +82,9 @@ export default function Logo({
           <animateTransform
             attributeName="transform"
             type="rotate"
-            from="0 78 52.7969"
-            to="360 78 52.7969"
-            dur="4s"
+            from="0 78.166 52.85"
+            to="360 78.166 52.85"
+            dur="3.5s"
             repeatCount="indefinite"
           />
         )}

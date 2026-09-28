@@ -24,7 +24,7 @@ export default function SplashScreen({ autoRedirect = false, redirectDelay = 400
     if (!autoRedirect) return;
 
     const timer = setTimeout(() => {
-      navigate(ROUTES.DASHBOARD);
+      navigate(ROUTES.TOPIC_MONITORING);
     }, redirectDelay);
 
     return () => clearTimeout(timer);
@@ -32,7 +32,8 @@ export default function SplashScreen({ autoRedirect = false, redirectDelay = 400
 
   return (
     <main
-      className="min-h-screen w-full bg-[#0B0F19] text-white flex flex-col items-center justify-center relative select-none overflow-hidden"
+      onClick={() => navigate(ROUTES.TOPIC_MONITORING)}
+      className="min-h-screen w-full bg-[#0B0F19] text-white flex flex-col items-center justify-center relative select-none overflow-hidden cursor-pointer"
       role="main"
       aria-label="SPIS Splash Screen"
     >

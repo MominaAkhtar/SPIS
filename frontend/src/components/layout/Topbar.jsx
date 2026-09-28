@@ -28,14 +28,14 @@ export default function Topbar({
 
   return (
     <>
-      <header className="h-16 bg-[#0D111E] border-b border-[#1B2638] flex items-center justify-between px-4 sm:px-6 sticky top-0 z-30 flex-shrink-0">
+      <header className="h-16 bg-[#0B0F19] flex items-center justify-between px-4 sm:px-6 lg:px-8 sticky top-0 z-30 flex-shrink-0">
         {/* Left Section: Mobile Menu + Breadcrumbs */}
         <div className="flex items-center gap-3 min-w-0">
           {onToggleSidebar && (
             <button
               type="button"
               onClick={onToggleSidebar}
-              className="lg:hidden p-1.5 rounded-lg bg-[#111827] border border-[#1B2638] text-slate-400 hover:text-white"
+              className="lg:hidden p-1.5 rounded-lg bg-[#111827] border border-[#1E2638] text-slate-400 hover:text-white"
               aria-label="Toggle navigation"
             >
               <Menu className="w-4 h-4" />
@@ -45,24 +45,24 @@ export default function Topbar({
           <Breadcrumb items={breadcrumbs} />
         </div>
 
-        {/* Right Section: Time window, Filters, Search, Alerts, Profile */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          {/* Date Range Selector */}
-          <div className="hidden sm:block">
-            <DateRangePicker />
-          </div>
+        {/* Middle Section: Date Range Selector (centered between left and right groups) */}
+        <div className="hidden sm:block">
+          <DateRangePicker />
+        </div>
 
+        {/* Right Section: Filters, Search, Alerts, Profile */}
+        <div className="flex items-center gap-3 flex-shrink-0">
           {/* Filter Button */}
           <button
             type="button"
             onClick={onToggleFilter}
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+            className={`flex h-8 items-center gap-1.5 px-3 rounded-md text-sm font-semibold border transition-colors ${
               filterActive
                 ? 'bg-[#00BFA5]/15 border-[#00BFA5] text-[#00BFA5]'
-                : 'bg-[#111827] border-[#1B2638] text-slate-300 hover:text-white hover:bg-[#131F35] hover:border-[#263954]'
+                : 'bg-[#1E2227] border-[#24272C] text-white hover:bg-[#262B31]'
             }`}
           >
-            <Filter className="w-3.5 h-3.5 text-slate-400" />
+            <Filter className="w-4 h-4" />
             <span className="hidden md:inline">Filters</span>
           </button>
 
@@ -71,9 +71,9 @@ export default function Topbar({
             type="button"
             onClick={() => setIsSearchOpen(true)}
             aria-label="Global search"
-            className="p-2 rounded-lg bg-[#111827] border border-[#1B2638] text-slate-400 hover:text-white hover:bg-[#131F35] hover:border-[#263954] transition-colors"
+            className="flex h-8 w-8 items-center justify-center text-[#9E9E9E] hover:text-white transition-colors"
           >
-            <Search className="w-4 h-4" />
+            <Search className="w-5 h-5" />
           </button>
 
           {/* Notification Alert Area */}
@@ -110,7 +110,7 @@ export default function Topbar({
                     key={idx}
                     type="button"
                     onClick={() => setSearchQuery(item)}
-                    className="px-2.5 py-1 rounded bg-[#152033] border border-[#1E2D48] text-slate-300 hover:text-[#00BFA5] hover:border-[#00BFA5]/40 transition-colors"
+                    className="px-2.5 py-1 rounded bg-[#111D33] border border-[#1E2D48] text-slate-300 hover:text-[#00D284] hover:border-[#00D284]/40 transition-colors"
                   >
                     {item}
                   </button>

@@ -35,31 +35,22 @@ export default function UserProfileArea({
   };
 
   return (
-    <div className="relative inline-block" ref={dropdownRef}>
+    <div className="relative flex items-center" ref={dropdownRef}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg border transition-all duration-150 ${
-          isOpen
-            ? 'bg-[#1A2840] border-[#00BFA5]/40 text-white'
-            : 'bg-[#111827] border-[#1B2638] text-slate-200 hover:bg-[#131F35] hover:border-[#263954]'
-        }`}
+        className="flex items-center gap-2 px-1 py-1 rounded-lg text-slate-200 hover:text-white transition-colors"
       >
-        <Avatar name={displayName} size="sm" />
-        <div className="hidden md:flex flex-col text-left leading-tight">
-          <span className="text-xs font-semibold text-white tracking-wide">{displayName}</span>
-        </div>
-        <ChevronDown
-          className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${
-            isOpen ? 'rotate-180 text-white' : ''
-          }`}
-        />
+        <Avatar name="RA" size="topbar" />
+        <span className="hidden sm:inline text-sm font-normal text-white tracking-normal whitespace-nowrap">
+          {displayName}
+        </span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-60 rounded-xl bg-[#111827] border border-[#263954] shadow-2xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="absolute right-0 mt-2 w-60 rounded-xl bg-[#0D1527] border border-[#223654] shadow-2xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
           {/* User Overview */}
-          <div className="p-3.5 border-b border-[#1B2638] bg-[#0A101D] flex items-center gap-3">
+          <div className="p-3.5 border-b border-[#172338] bg-[#0A101D] flex items-center gap-3">
             <Avatar name={displayName} size="md" status="online" />
             <div className="min-w-0 flex-1">
               <p className="text-xs font-bold text-white truncate">{displayName}</p>
@@ -73,7 +64,7 @@ export default function UserProfileArea({
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2.5 w-full px-3 py-2 text-xs font-medium text-slate-300 hover:text-white hover:bg-[#1A2840] rounded-lg transition-colors"
+              className="flex items-center gap-2.5 w-full px-3 py-2 text-xs font-medium text-slate-300 hover:text-white hover:bg-[#162540] rounded-lg transition-colors"
             >
               <User className="w-3.5 h-3.5 text-slate-400" />
               <span>Researcher Profile</span>
@@ -84,7 +75,7 @@ export default function UserProfileArea({
                 setIsOpen(false);
                 navigate(ROUTES.ALERTS_PREDICTIONS);
               }}
-              className="flex items-center gap-2.5 w-full px-3 py-2 text-xs font-medium text-slate-300 hover:text-white hover:bg-[#1A2840] rounded-lg transition-colors"
+              className="flex items-center gap-2.5 w-full px-3 py-2 text-xs font-medium text-slate-300 hover:text-white hover:bg-[#162540] rounded-lg transition-colors"
             >
               <Bell className="w-3.5 h-3.5 text-slate-400" />
               <span>Alert Preferences</span>
@@ -92,7 +83,7 @@ export default function UserProfileArea({
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2.5 w-full px-3 py-2 text-xs font-medium text-slate-300 hover:text-white hover:bg-[#1A2840] rounded-lg transition-colors"
+              className="flex items-center gap-2.5 w-full px-3 py-2 text-xs font-medium text-slate-300 hover:text-white hover:bg-[#162540] rounded-lg transition-colors"
             >
               <Shield className="w-3.5 h-3.5 text-slate-400" />
               <span>Security & Access</span>
@@ -100,7 +91,7 @@ export default function UserProfileArea({
           </div>
 
           {/* Logout */}
-          <div className="p-1.5 border-t border-[#1B2638] bg-[#0A101D]">
+          <div className="p-1.5 border-t border-[#172338] bg-[#0A101D]">
             <button
               type="button"
               onClick={handleLogout}

@@ -1,21 +1,39 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import {
-  LayoutDashboard,
-  Crosshair,
-  FileText,
-  Share2,
-  AlertTriangle,
-  X,
-  LogOut,
-  Radio,
-} from 'lucide-react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { PanelsTopLeft, FileText, Users, Bell, X } from 'lucide-react';
 import Logo from '../common/Logo';
 import Avatar from '../common/Avatar';
 import TopicSelectorModal from '../common/TopicSelectorModal';
 import { ROUTES } from '../../constants/routes';
 import { useTopic } from '../../context/TopicContext';
 import { useAuth } from '../../context/AuthContext';
+
+/**
+ * Custom "Topic Monitoring" icon: ring + faint tick marks + centre sparkle.
+ * Uses currentColor, so it follows the gray / teal colour of the nav item.
+ */
+function TopicMonitoringIcon({ className }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10.5" />
+      <path d="M12 4.8V6.4M12 17.6V19.2M4.8 12H6.4M17.6 12H19.2" strokeWidth="1.5" opacity="0.45" />
+      <path
+        d="M12 9.6L12.8 11.2L14.4 12L12.8 12.8L12 14.4L11.2 12.8L9.6 12L11.2 11.2Z"
+        fill="currentColor"
+        strokeWidth="1"
+      />
+    </svg>
+  );
+}
 
 /**
  * SPIS Sidebar Navigation
@@ -27,6 +45,7 @@ import { useAuth } from '../../context/AuthContext';
  * - Bottom Researcher Profile Footer
  */
 export default function Sidebar({ onCloseMobile }) {
+  const location = useLocation();
   const { selectedTopic } = useTopic() || {};
   const { user, logout } = useAuth() || {};
   const [isTopicModalOpen, setIsTopicModalOpen] = useState(false);
@@ -37,12 +56,12 @@ export default function Sidebar({ onCloseMobile }) {
     {
       label: 'Dashboard',
       path: ROUTES.DASHBOARD,
-      icon: LayoutDashboard,
+      icon: PanelsTopLeft,
     },
     {
       label: 'Topic Monitoring',
       path: ROUTES.TOPIC_MONITORING,
-      icon: Crosshair,
+      icon: TopicMonitoringIcon,
     },
     {
       label: 'Content Analysis',
@@ -52,26 +71,60 @@ export default function Sidebar({ onCloseMobile }) {
     {
       label: 'Network Analysis',
       path: ROUTES.NETWORK_ANALYSIS,
-      icon: Share2,
+      icon: Users,
     },
     {
       label: 'Alerts & Predictions',
       path: ROUTES.ALERTS_PREDICTIONS,
-      icon: AlertTriangle,
+      icon: Bell,
     },
   ];
 
+  const isNavActive = (path) => {
+    if (path === ROUTES.NETWORK_ANALYSIS) {
+      return (
+        location.pathname === ROUTES.NETWORK_ANALYSIS ||
+        location.pathname === '/bridge-users' ||
+        location.pathname === '/'
+      );
+    }
+    if (path === ROUTES.ALERTS_PREDICTIONS) {
+      return (
+        location.pathname === ROUTES.ALERTS_PREDICTIONS ||
+        location.pathname === '/alerts-prediction' ||
+        location.pathname === '/alerts' ||
+        location.pathname === '/predictions'
+      );
+    }
+    return location.pathname === path;
+  };
+
   return (
     <>
-      <aside className="w-64 bg-[#0D111E] border-r border-[#1B2638] text-slate-100 min-h-screen flex flex-col flex-shrink-0 select-none">
+      <aside className="w-[220px] bg-[#0B0D0E] border-r border-[#2A2D32] text-slate-100 flex flex-col flex-shrink-0 select-none">
         {/* Brand Header */}
-        <div className="h-16 px-5 border-b border-[#1B2638] flex items-center justify-between">
-          <Logo variant="horizontal" size="sm" showSubtitle={true} />
+        <div className="relative px-5 pt-[22px] pb-4 border-b border-[#2A2D32]">
+          <div className="flex items-center gap-2.5">
+            <Logo size={24} glow={false} radius={14} className="flex-shrink-0" />
+            <span className="text-2xl font-extrabold text-white tracking-tight leading-none">
+              SPIS
+            </span>
+          </div>
+
+          <div className="mt-1 flex flex-col">
+            <span className="text-[8px] leading-[14px] font-bold text-[#00BFA5] uppercase">
+              Societal Polarization
+            </span>
+            <span className="text-[8px] leading-[14px] font-semibold text-[#9E9E9E] uppercase">
+              Intelligence System
+            </span>
+          </div>
+
           {onCloseMobile && (
             <button
               type="button"
               onClick={onCloseMobile}
-              className="lg:hidden p-1 text-slate-400 hover:text-white"
+              className="lg:hidden absolute top-3 right-3 p-1 text-slate-400 hover:text-white"
             >
               <X className="w-4 h-4" />
             </button>
@@ -79,48 +132,38 @@ export default function Sidebar({ onCloseMobile }) {
         </div>
 
         {/* Navigation Items */}
-        <nav className="flex-1 px-3 py-5 space-y-1.5 overflow-y-auto">
+        <nav className="px-2 pt-6 pb-6 flex flex-col gap-[3px]">
           {navItems.map((item) => {
             const Icon = item.icon;
+            const active = isNavActive(item.path);
 
             return (
               <NavLink
                 key={item.path}
                 to={item.path}
                 onClick={onCloseMobile}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
-                    isActive
-                      ? 'bg-[#00BFA5]/10 text-[#00BFA5] border-l-2 border-[#00BFA5] shadow-sm shadow-[#00BFA5]/10'
-                      : 'text-slate-400 hover:text-slate-100 hover:bg-[#152033] border-l-2 border-transparent'
-                  }`
-                }
+                className={`flex h-[42px] items-center gap-3 rounded-l-sm rounded-r-md border-l-4 px-3 text-sm font-medium transition-colors ${
+                  active
+                    ? 'border-[#00BFA5] bg-[#00BFA5]/[0.08] text-[#00BFA5]'
+                    : 'border-transparent text-[#9E9E9E] hover:font-semibold'
+                }`}
               >
-                {({ isActive }) => (
-                  <>
-                    <Icon
-                      className={`w-4 h-4 flex-shrink-0 ${
-                        isActive ? 'text-[#00BFA5]' : 'text-slate-400'
-                      }`}
-                    />
-                    <span className="truncate">{item.label}</span>
-                  </>
-                )}
+                <Icon className="w-5 h-5 flex-shrink-0" />
+                <span className="truncate">{item.label}</span>
               </NavLink>
             );
           })}
         </nav>
 
         {/* Bottom Section: Current Topic Card */}
-        <div className="p-3 border-t border-[#1B2638] space-y-3 bg-[#070B14]">
-          {/* Current Topic Indicator Widget */}
-          <div className="p-3 rounded-xl bg-[#111827] border border-[#1B2638] relative overflow-hidden group">
+        <div className="p-3.5 border-t border-[#2A2D32] bg-[#0B0D0E] mt-auto">
+          <div className="p-3.5 rounded-xl bg-[#111827] border border-[#1E2638]">
             <div className="flex items-center gap-2 mb-1.5">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00BFA5] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BFA5]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2ECC71] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2ECC71]"></span>
               </span>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+              <span className="text-[11px] font-medium text-[#8A94A6]">
                 Current Topic
               </span>
             </div>
@@ -129,36 +172,17 @@ export default function Sidebar({ onCloseMobile }) {
               {activeTopicTitle}
             </p>
 
+            <p className="text-[10px] text-[#8A94A6] mt-0.5 mb-2.5">
+              X (Twitter) · Last 7 Days
+            </p>
+
             <button
               type="button"
               onClick={() => setIsTopicModalOpen(true)}
-              className="mt-2 text-[11px] font-semibold text-[#00BFA5] hover:text-[#2DCCA7] transition-colors flex items-center gap-1 group-hover:underline"
+              className="w-full py-1.5 px-3 rounded-lg bg-[#142222] border border-[#00BFA5]/30 text-[#00BFA5] text-xs font-semibold hover:bg-[#00BFA5]/20 hover:border-[#00BFA5]/50 transition-all text-center block"
             >
-              <span>Change Topic</span>
+              Change Topic
             </button>
-          </div>
-
-          {/* User Profile / Status Footer (Page 7 Prototype match) */}
-          <div className="flex items-center justify-between pt-1 px-1">
-            <div className="flex items-center gap-2 min-w-0">
-              <Avatar name={user?.name || 'Raima Faisal'} size="xs" />
-              <div className="truncate">
-                <p className="text-xs font-semibold text-slate-200 truncate">
-                  {user?.name || 'Raima Faisal'}
-                </p>
-                <p className="text-[9px] text-slate-500 truncate">Researcher</p>
-              </div>
-            </div>
-            {logout && (
-              <button
-                type="button"
-                onClick={logout}
-                title="Sign Out"
-                className="text-slate-500 hover:text-rose-400 p-1 rounded transition-colors"
-              >
-                <LogOut className="w-3.5 h-3.5" />
-              </button>
-            )}
           </div>
         </div>
       </aside>

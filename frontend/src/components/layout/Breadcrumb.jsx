@@ -33,25 +33,29 @@ export default function Breadcrumb({ items }) {
   }
 
   return (
-    <nav aria-label="Breadcrumb" className="flex items-center text-xs">
-      <ol className="inline-flex items-center space-x-1.5 sm:space-x-2">
+    <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+      <ol className="inline-flex items-center">
         {breadcrumbs.map((item, index) => {
           const isLast = index === breadcrumbs.length - 1;
 
           return (
             <li key={index} className="inline-flex items-center">
               {index > 0 && (
-                <span className="mx-1.5 text-slate-600 font-light select-none">/</span>
+                <span className="mx-2 text-slate-600 select-none">/</span>
               )}
               {item.to && !isLast ? (
                 <Link
                   to={item.to}
-                  className="text-slate-400 hover:text-white transition-colors font-medium"
+                  className={`hover:text-white transition-colors ${
+                    index === 0
+                      ? 'text-[#9E9E9E] font-normal'
+                      : 'text-slate-400 font-semibold'
+                  }`}
                 >
                   {item.label}
                 </Link>
               ) : (
-                <span className={`font-semibold ${isLast ? 'text-white' : 'text-slate-400'}`}>
+                <span className={`font-semibold ${isLast ? 'text-teal-500' : 'text-slate-400'}`}>
                   {item.label}
                 </span>
               )}

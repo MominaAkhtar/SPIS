@@ -27,26 +27,27 @@ export const alertsService = {
       predictionNext7Days: {
         score: 78,
         level: 'HIGH RISK',
-        changeText: '6% projected increase',
+        changeText: '12% from last week',
         isRising: true,
-        sparkline: [52, 54, 58, 62, 67, 72, 78],
+        sparkline: [52, 56, 54, 62, 68, 73, 78],
       },
       activeAlerts: {
         total: 5,
-        critical: 4,
-        warning: 1,
+        critical: 2,
+        warning: 3,
       },
       affectedCommunities: {
         total: 12,
-        concentration: 'Large Risk Concentration',
+        concentration: 'High Risk Communities',
         newDetected: 3,
+        changeText: '3 new this week',
       },
     };
   },
 
   /**
    * Fetch 14-day Polarization Trend Prediction dataset
-   * Spans historical telemetry (May 08 - May 14) and AI forecast (May 14 - May 21).
+   * Spans historical telemetry (May 15 - May 21) and AI forecast (May 21 - May 28).
    */
   getTrendPredictionData: async () => {
     try {
@@ -57,25 +58,25 @@ export const alertsService = {
     }
 
     return [
-      { date: 'May 08', actual: 48, predicted: null },
-      { date: 'May 09', actual: 52, predicted: null },
-      { date: 'May 10', actual: 50, predicted: null },
-      { date: 'May 11', actual: 57, predicted: null },
-      { date: 'May 12', actual: 61, predicted: null },
-      { date: 'May 13', actual: 68, predicted: null },
-      { date: 'May 14', actual: 72, predicted: 72 }, // Overlap junction
-      { date: 'May 15', actual: null, predicted: 74 },
-      { date: 'May 16', actual: null, predicted: 76 },
-      { date: 'May 17', actual: null, predicted: 75 },
-      { date: 'May 18', actual: null, predicted: 78 },
-      { date: 'May 19', actual: null, predicted: 80 },
-      { date: 'May 20', actual: null, predicted: 81 },
-      { date: 'May 21', actual: null, predicted: 83 },
+      { date: 'May 15', actual: 52, predicted: null },
+      { date: 'May 16', actual: 58, predicted: null },
+      { date: 'May 17', actual: 65, predicted: null },
+      { date: 'May 18', actual: 62, predicted: null },
+      { date: 'May 19', actual: 68, predicted: null },
+      { date: 'May 20', actual: 70, predicted: null },
+      { date: 'May 21', actual: 72, predicted: 72 },
+      { date: 'May 22', actual: null, predicted: 75 },
+      { date: 'May 23', actual: null, predicted: 78 },
+      { date: 'May 24', actual: null, predicted: 82 },
+      { date: 'May 25', actual: null, predicted: 85 },
+      { date: 'May 26', actual: null, predicted: 88 },
+      { date: 'May 27', actual: null, predicted: 92 },
+      { date: 'May 28', actual: null, predicted: 95 },
     ];
   },
 
   /**
-   * Fetch recent high-priority risk alerts
+   * Fetch recent high-priority risk alerts matching Figma screen
    */
   getRecentAlerts: async () => {
     try {
@@ -89,9 +90,9 @@ export const alertsService = {
       {
         id: 'alt-1',
         title: 'High Polarization Detected',
-        badge: 'HIGH',
-        level: 'high',
-        metadata: 'Community A & B • Topic: Elections',
+        badge: 'CRITICAL',
+        level: 'critical',
+        metadata: 'Category: Politics  •  Region: Pakistan',
         time: '2h ago',
       },
       {
@@ -99,7 +100,7 @@ export const alertsService = {
         title: 'Rising Polarization Trend',
         badge: 'WARNING',
         level: 'warning',
-        metadata: 'Government Policies • Velocity: +45%',
+        metadata: 'Category: Religion  •  Region: Global',
         time: '5h ago',
       },
       {
@@ -107,14 +108,14 @@ export const alertsService = {
         title: 'Echo Chamber Formation',
         badge: 'CRITICAL',
         level: 'critical',
-        metadata: 'Community C • Isolation: 0.88',
+        metadata: 'Category: Politics  •  Community: Group A',
         time: '1d ago',
       },
     ];
   },
 
   /**
-   * Fetch ranked risky discourse topics
+   * Fetch ranked risky discourse topics matching Figma screen
    */
   getRiskyTopics: async () => {
     try {
@@ -125,10 +126,10 @@ export const alertsService = {
     }
 
     return [
-      { id: 1, rank: 1, label: 'Polarization Discourse', value: 88, color: 'from-rose-500 to-orange-500' },
-      { id: 2, rank: 2, label: 'Political Corruption', value: 72, color: 'from-orange-500 to-amber-500' },
-      { id: 3, rank: 3, label: 'Social Inequality', value: 65, color: 'from-cyan-500 to-blue-500' },
-      { id: 4, rank: 4, label: 'Immigration Debate', value: 48, color: 'from-[#00BFA5] to-teal-500' },
+      { id: 1, rank: 1, label: 'Political Extremism', value: 89, color: '#EF5350' },
+      { id: 2, rank: 2, label: 'Religious Conflicts', value: 72, color: '#FB923C' },
+      { id: 3, rank: 3, label: 'Social Inequality', value: 65, color: '#00BFA5' },
+      { id: 4, rank: 4, label: 'Immigration Debate', value: 48, color: '#00BFA5' },
     ];
   },
 };

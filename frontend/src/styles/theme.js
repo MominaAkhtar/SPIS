@@ -8,67 +8,71 @@ export const theme = {
     // Base platform backgrounds
     background: {
       DEFAULT: '#0B0F19',
-      dark: '#090B13',
-      subtle: '#111416',
+      dark: '#0B0D0E',
+      subtle: '#090C14',
     },
     // Surface & card levels
     surface: {
       DEFAULT: '#111827',
-      elevated: '#152033',
-      hover: '#1A2840',
-      active: '#1E304D',
-      subtle: '#0E1420',
+      elevated: '#151E32',
+      hover: '#19253D',
+      active: '#1E2D4A',
+      subtle: '#0D1424',
     },
     // Borders
     border: {
-      DEFAULT: '#1B2638',
-      subtle: '#191E26',
-      strong: '#263954',
+      DEFAULT: '#1E2638',
+      subtle: '#172338',
+      strong: '#2A3B57',
       focus: '#00BFA5',
     },
-    // Brand Primary (Vibrant Emerald / Mint Green)
+    // Brand Primary (Vibrant Teal / Mint Green)
     primary: {
-      light: '#2DCCA7',
+      light: '#42D9C8',
       DEFAULT: '#00BFA5',
-      dark: '#009984',
-      hover: '#2DCCA7',
-      glow: 'rgba(0, 191, 165, 0.15)',
-      subtle: '#07231F',
+      dark: '#008E7B',
+      hover: '#14B8A6',
+      glow: 'rgba(0, 191, 165, 0.2)',
+      subtle: '#142222',
     },
     // Secondary Accent Palette
     accent: {
-      cyan: '#00C7FF',
-      blue: '#3B82F6',
+      cyan: '#06B6D4',
+      blue: '#3498DB',
       purple: '#8B5CF6',
       pink: '#EC4899',
-      indigo: '#6366F1',
+      magenta: '#E91E63',
+      orange: '#F39C12',
+      amber: '#FFA500',
+      green: '#2ECC71',
+      red: '#E74C3C',
     },
     // Risk & Status Colors
     status: {
       low: {
+        text: '#2ECC71',
+        bg: 'rgba(46, 204, 113, 0.12)',
+        border: 'rgba(46, 204, 113, 0.3)',
+      },
+      medium: {
+        text: '#F39C12',
+        bg: 'rgba(243, 156, 18, 0.12)',
+        border: 'rgba(243, 156, 18, 0.3)',
+      },
+      high: {
+        text: '#E74C3C',
+        bg: 'rgba(231, 76, 60, 0.12)',
+        border: 'rgba(231, 76, 60, 0.3)',
+      },
+      critical: {
+        text: '#E74C3C',
+        bg: 'rgba(231, 76, 60, 0.18)',
+        border: 'rgba(231, 76, 60, 0.4)',
+      },
+      info: {
         text: '#00BFA5',
         bg: 'rgba(0, 191, 165, 0.12)',
         border: 'rgba(0, 191, 165, 0.3)',
-      },
-      medium: {
-        text: '#F59E0B',
-        bg: 'rgba(245, 158, 11, 0.12)',
-        border: 'rgba(245, 158, 11, 0.3)',
-      },
-      high: {
-        text: '#F97316',
-        bg: 'rgba(249, 115, 22, 0.12)',
-        border: 'rgba(249, 115, 22, 0.3)',
-      },
-      critical: {
-        text: '#EF4444',
-        bg: 'rgba(239, 68, 68, 0.12)',
-        border: 'rgba(239, 68, 68, 0.3)',
-      },
-      info: {
-        text: '#00C7FF',
-        bg: 'rgba(0, 199, 255, 0.12)',
-        border: 'rgba(0, 199, 255, 0.3)',
       },
     },
     // Typography Text Colors
@@ -77,8 +81,8 @@ export const theme = {
       secondary: '#94A3B8',
       muted: '#64748B',
       dimmed: '#475569',
-      inverse: '#090B13',
-      brand: '#00BFA5',
+      inverse: '#04070D',
+      brand: '#00D284',
     },
   },
   borderRadius: {
@@ -91,7 +95,7 @@ export const theme = {
   },
   shadows: {
     card: '0 4px 20px -2px rgba(0, 0, 0, 0.5)',
-    glowEmerald: '0 0 16px rgba(0, 191, 165, 0.25)',
+    glowEmerald: '0 0 16px rgba(0, 210, 132, 0.25)',
     glowCyan: '0 0 16px rgba(0, 199, 255, 0.25)',
     popover: '0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.6)',
   },

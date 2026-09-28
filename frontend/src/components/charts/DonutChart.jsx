@@ -7,11 +7,11 @@ import { Info } from 'lucide-react';
  */
 
 const DEFAULT_DISTRIBUTION_DATA = [
-  { label: '0.80 – 1.00 (High)', value: 86, percent: 17.7, color: '#EC4899' },
-  { label: '0.60 – 0.79 (Medium)', value: 164, percent: 33.7, color: '#8B5CF6' },
-  { label: '0.40 – 0.59 (Low)', value: 156, percent: 32.1, color: '#00BFA5' },
-  { label: '0.20 – 0.39 (Very Low)', value: 62, percent: 12.8, color: '#FFA500' },
-  { label: '0.00 – 0.19 (Minimal)', value: 18, percent: 3.7, color: '#64748B' },
+  { label: '0.80 – 1.00 (High)', value: 86, percent: 17.7, color: '#E91E63' },
+  { label: '0.60 – 0.79 (Medium)', value: 164, percent: 33.7, color: '#3498DB' },
+  { label: '0.40 – 0.59 (Low)', value: 156, percent: 32.1, color: '#2ECC71' },
+  { label: '0.20 – 0.39 (Very Low)', value: 62, percent: 12.8, color: '#F39C12' },
+  { label: '0.00 – 0.19 (Minimal)', value: 18, percent: 3.7, color: '#8A94A6' },
 ];
 
 export default function DonutChart({
@@ -22,6 +22,9 @@ export default function DonutChart({
   size = 150,
   strokeWidth = 16,
   showSideLegend = true,
+  showCenterCallout = true,
+  showLegendValues = true,
+  legendShape = 'circle',
   className = '',
 }) {
   const [hoveredIdx, setHoveredIdx] = useState(null);
@@ -95,14 +98,16 @@ export default function DonutChart({
           </svg>
 
           {/* Center Callout */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
-            <span className="text-2xl font-bold text-white tracking-tight font-mono-numbers leading-tight">
-              {hoveredIdx !== null ? data[hoveredIdx].value : centerValue}
-            </span>
-            <span className="text-[10px] font-semibold text-[#8A94A6] uppercase tracking-wider">
-              {hoveredIdx !== null ? 'COUNT' : centerLabel}
-            </span>
-          </div>
+          {showCenterCallout && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
+              <span className="text-2xl font-bold text-white tracking-tight font-mono-numbers leading-tight">
+                {hoveredIdx !== null ? data[hoveredIdx].value : centerValue}
+              </span>
+              <span className="text-[10px] font-semibold text-[#8A94A6] uppercase tracking-wider">
+                {hoveredIdx !== null ? 'COUNT' : centerLabel}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Legend / Breakdown Table */}
@@ -121,21 +126,29 @@ export default function DonutChart({
                 >
                   <div className="flex items-center gap-2 min-w-0">
                     <span
-                      className="w-2 h-2 rounded-full flex-shrink-0"
+                      className={`w-2.5 h-2.5 flex-shrink-0 ${
+                        legendShape === 'square' ? 'rounded-sm' : 'rounded-full'
+                      }`}
                       style={{ backgroundColor: item.color }}
                     />
-                    <span className="text-slate-300 truncate text-[11px]">
+                    <span className="text-slate-300 truncate text-[11px] font-medium">
                       {item.label}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 text-right flex-shrink-0 font-mono-numbers">
-                    <span className="text-white font-medium text-[11px]">
-                      {item.value}
-                    </span>
-                    <span className="text-[#8A94A6] text-[11px] w-9 text-right">
-                      {item.percent}%
-                    </span>
-                  </div>
+                  {showLegendValues && (
+                    <div className="flex items-center gap-3 text-right flex-shrink-0 font-mono-numbers">
+                      {item.value !== undefined && (
+                        <span className="text-white font-medium text-[11px]">
+                          {item.value}
+                        </span>
+                      )}
+                      {item.percent !== undefined && (
+                        <span className="text-[#8A94A6] text-[11px] w-9 text-right">
+                          {item.percent}%
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}

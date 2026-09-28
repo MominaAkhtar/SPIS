@@ -34,6 +34,9 @@ export default function AppRoutes() {
         <Route path="/network-analysis/interactions" element={<NetworkAnalysisPage />} />
         <Route path="/interaction-types" element={<NetworkAnalysisPage />} />
         <Route path={ROUTES.ALERTS_PREDICTIONS} element={<AlertsPredictionsPage />} />
+        <Route path="/alerts-prediction" element={<AlertsPredictionsPage />} />
+        <Route path="/alerts" element={<AlertsPredictionsPage />} />
+        <Route path="/predictions" element={<AlertsPredictionsPage />} />
 
         {/* Fallback to Network Analysis */}
         <Route path="*" element={<Navigate to={ROUTES.NETWORK_ANALYSIS} replace />} />

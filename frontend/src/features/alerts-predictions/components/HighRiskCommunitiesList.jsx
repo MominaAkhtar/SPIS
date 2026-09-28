@@ -1,63 +1,85 @@
 import React from 'react';
 import { Users } from 'lucide-react';
 
+/**
+ * SPIS HighRiskCommunitiesList Component
+ * Displays ranked community clusters exhibiting polarization or boundary isolation.
+ * Sized to match Prediction Insights inner cards.
+ */
 export default function HighRiskCommunitiesList({
   communities = [
     {
       id: 'comm-a',
+      index: 1,
       name: 'Community A',
-      risk: 'HIGH',
-      badgeClass: 'bg-rose-500/15 text-rose-400 border-rose-500/30',
-      volume: '4.8K',
-      polarity: '85%',
+      score: 85,
+      risk: 'VERY HIGH',
+      isVeryHigh: true,
+      iconType: 'users',
     },
     {
       id: 'comm-b',
+      index: 2,
       name: 'Community B',
+      score: 72,
       risk: 'HIGH',
-      badgeClass: 'bg-rose-500/15 text-rose-400 border-rose-500/30',
-      volume: '3.9K',
-      polarity: '81%',
+      isVeryHigh: false,
+      iconType: 'number',
     },
     {
       id: 'comm-c',
+      index: 3,
       name: 'Community C',
-      risk: 'MEDIUM',
-      badgeClass: 'bg-amber-500/15 text-amber-400 border-amber-500/30',
-      volume: '2.7K',
-      polarity: '74%',
+      score: 68,
+      risk: 'HIGH',
+      isVeryHigh: false,
+      iconType: 'number',
     },
   ],
   className = '',
 }) {
   return (
     <div className={`space-y-2.5 ${className}`}>
-      {communities.map((c) => (
-        <div
-          key={c.id}
-          className="p-3 rounded-xl bg-[#111416] border border-[#1B2638] hover:border-[#263954] transition-all flex items-center justify-between gap-3 group"
-        >
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="p-2 rounded-lg bg-[#152033] border border-[#1E2D48] text-slate-400 group-hover:text-white transition-colors flex-shrink-0">
-              <Users className="w-3.5 h-3.5" />
-            </div>
-            <div className="min-w-0">
-              <h4 className="text-xs font-semibold text-slate-200 group-hover:text-white truncate">
-                {c.name}
-              </h4>
-              <p className="text-[10px] text-slate-400 font-mono mt-0.5 truncate">
-                Daily Volume: <span className="text-slate-200">{c.volume}</span> • Polarity: <span className="text-rose-400 font-semibold">{c.polarity}</span>
-              </p>
-            </div>
-          </div>
+      {communities.map((c) => {
+        const isCritical = c.isVeryHigh || c.risk === 'VERY HIGH';
+        const badgeBorder = isCritical
+          ? 'border-[#EF5350] text-[#EF5350] bg-[#EF5350]/10'
+          : 'border-[#F1C40F] text-[#F1C40F] bg-[#F1C40F]/10';
 
-          <span
-            className={`text-[10px] font-bold px-2 py-0.5 rounded border uppercase font-mono tracking-wider flex-shrink-0 ${c.badgeClass}`}
+        return (
+          <div
+            key={c.id}
+            className="px-3.5 py-2.5 rounded-xl bg-[#131B28]/90 border border-[#1E2638] hover:border-[#2A3B57] transition-all flex items-center justify-between gap-3 group min-h-[56px] select-none"
           >
-            {c.risk}
-          </span>
-        </div>
-      ))}
+            {/* Left Icon + Community Info */}
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-[#182232] border border-[#1E2638] text-slate-300 group-hover:text-white flex items-center justify-center flex-shrink-0 text-xs font-semibold">
+                {c.iconType === 'users' ? (
+                  <Users className="w-4 h-4 text-slate-400 group-hover:text-slate-200" />
+                ) : (
+                  <span>{c.index}.</span>
+                )}
+              </div>
+
+              <div className="min-w-0">
+                <h4 className="text-xs sm:text-sm font-semibold text-white group-hover:text-slate-100 truncate">
+                  {c.name}
+                </h4>
+                <p className="text-[11px] text-[#8A94A6] mt-0.5 truncate">
+                  Risk Score: <span className="text-slate-300">{c.score}</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Threat Badge */}
+            <span
+              className={`text-[10px] font-bold px-2 py-0.5 rounded border uppercase font-mono tracking-wider flex-shrink-0 ${badgeBorder}`}
+            >
+              {c.risk}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 }

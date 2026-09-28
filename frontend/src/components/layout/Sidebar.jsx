@@ -88,6 +88,14 @@ export default function Sidebar({ onCloseMobile }) {
         location.pathname === '/'
       );
     }
+    if (path === ROUTES.ALERTS_PREDICTIONS) {
+      return (
+        location.pathname === ROUTES.ALERTS_PREDICTIONS ||
+        location.pathname === '/alerts-prediction' ||
+        location.pathname === '/alerts' ||
+        location.pathname === '/predictions'
+      );
+    }
     return location.pathname === path;
   };
 

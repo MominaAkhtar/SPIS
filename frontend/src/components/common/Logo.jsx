@@ -35,9 +35,9 @@ export default function Logo({
   // Modern SVG Radar/Compass Reticle matching the SPIS brand mark
   const LogoIcon = () => (
     <div
-      className={`${iconSizes[size] || iconSizes.md} rounded-lg bg-gradient-to-br from-[#00E590] via-[#00D284] to-[#009E60] p-[2px] flex items-center justify-center shadow-lg shadow-[#00D284]/20 flex-shrink-0`}
+      className={`${iconSizes[size] || iconSizes.md} rounded-xl bg-gradient-to-br from-[#00E590] via-[#00D284] to-[#009E60] p-[2px] flex items-center justify-center shadow-lg shadow-[#00D284]/25 flex-shrink-0`}
     >
-      <div className="w-full h-full rounded-[6px] bg-[#00D284] flex items-center justify-center text-[#061510]">
+      <div className="w-full h-full rounded-[10px] bg-[#00D284] flex items-center justify-center text-white">
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -49,8 +49,8 @@ export default function Logo({
         >
           {/* Compass / Radar target circle with needle */}
           <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
-          <polygon points="12 4 14.5 10.5 20 12 14.5 13.5 12 20 9.5 13.5 4 12 9.5 10.5 12 4" fill="currentColor" />
-          <circle cx="12" cy="12" r="1.5" fill="#040C08" />
+          <polygon points="12 4 14.5 10.5 20 12 14.5 13.5 12 20 9.5 13.5 4 12 9.5 10.5 12 4" fill="white" />
+          <circle cx="12" cy="12" r="1.5" fill="#00D284" />
         </svg>
       </div>
     </div>

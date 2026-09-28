@@ -72,8 +72,8 @@ export default function DateRangePicker({
             onClick={() => handleSelectPreset(preset)}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               selectedPreset === preset.id
-                ? 'bg-[#00BFA5] text-[#061510] font-semibold shadow-sm'
-                : 'bg-[#111827] border border-[#1B2638] text-slate-300 hover:text-white hover:border-[#263954]'
+                ? 'bg-[#00D284] text-[#061510] font-semibold shadow-sm'
+                : 'bg-[#0D1527] border border-[#172338] text-slate-300 hover:text-white hover:border-[#223654]'
             }`}
           >
             {preset.label}
@@ -89,16 +89,16 @@ export default function DateRangePicker({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+        className={`flex h-8 items-center gap-2 px-3 rounded-md text-sm font-medium border transition-colors ${
           isOpen
-            ? 'bg-[#1A2840] border-[#00BFA5]/40 text-white'
-            : 'bg-[#111827] border-[#1B2638] text-slate-200 hover:bg-[#131F35] hover:border-[#263954]'
+            ? 'bg-[#262B31] border-[#00BFA5]/40 text-white'
+            : 'bg-[#1E2227] border-[#24272C] text-white hover:bg-[#262B31]'
         }`}
       >
-        <Calendar className="w-3.5 h-3.5 text-[#00BFA5]" />
-        <span>{currentRange?.label || 'May 8 - May 14, 2025'}</span>
+        <Calendar className="w-4 h-4 text-[#00BFA5]" />
+        <span>{currentRange?.label || 'May 8 – May 14, 2025'}</span>
         <ChevronDown
-          className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${
+          className={`w-4 h-4 text-[#9E9E9E] transition-transform duration-200 ${
             isOpen ? 'rotate-180 text-white' : ''
           }`}
         />
@@ -106,7 +106,7 @@ export default function DateRangePicker({
 
       {/* Popover */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-72 rounded-xl bg-[#111827] border border-[#263954] shadow-2xl z-50 p-3 animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="absolute right-0 mt-2 w-72 rounded-xl bg-[#111827] border border-[#1E2638] shadow-2xl z-50 p-3 animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
             Time Window
           </div>
@@ -120,26 +120,26 @@ export default function DateRangePicker({
                 onClick={() => handleSelectPreset(preset)}
                 className={`flex items-center justify-between w-full px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
                   selectedPreset === preset.id
-                    ? 'bg-[#00BFA5]/10 text-[#00BFA5] font-semibold border border-[#00BFA5]/30'
+                    ? 'bg-[#00D284]/10 text-[#00D284] font-semibold border border-[#00D284]/30'
                     : 'text-slate-300 hover:bg-[#131F35] hover:text-white'
                 }`}
               >
                 <span>{preset.label}</span>
-                {selectedPreset === preset.id && <Check className="w-3.5 h-3.5 text-[#00BFA5]" />}
+                {selectedPreset === preset.id && <Check className="w-3.5 h-3.5 text-[#00D284]" />}
               </button>
             ))}
           </div>
 
           {/* Custom Date Pickers */}
           {selectedPreset === 'custom' && (
-            <div className="pt-2 border-t border-[#1B2638] space-y-2">
+            <div className="pt-2 border-t border-[#172338] space-y-2">
               <div>
                 <label className="block text-[10px] text-slate-400 mb-1">Start Date</label>
                 <input
                   type="date"
                   value={customStart}
                   onChange={(e) => setCustomStart(e.target.value)}
-                  className="w-full bg-[#0D111E] border border-[#1B2638] rounded-md px-2 py-1 text-xs text-white focus:outline-none focus:border-[#00BFA5]"
+                  className="w-full bg-[#080D18] border border-[#172338] rounded-md px-2 py-1 text-xs text-white focus:outline-none focus:border-[#00D284]"
                 />
               </div>
               <div>
@@ -148,13 +148,13 @@ export default function DateRangePicker({
                   type="date"
                   value={customEnd}
                   onChange={(e) => setCustomEnd(e.target.value)}
-                  className="w-full bg-[#0D111E] border border-[#1B2638] rounded-md px-2 py-1 text-xs text-white focus:outline-none focus:border-[#00BFA5]"
+                  className="w-full bg-[#080D18] border border-[#172338] rounded-md px-2 py-1 text-xs text-white focus:outline-none focus:border-[#00D284]"
                 />
               </div>
               <button
                 type="button"
                 onClick={handleApplyCustom}
-                className="w-full mt-2 py-1.5 bg-[#00BFA5] hover:bg-[#2DCCA7] text-[#061510] font-semibold text-xs rounded-lg transition-colors shadow-sm"
+                className="w-full mt-2 py-1.5 bg-[#00D284] hover:bg-[#05DF8E] text-[#061510] font-semibold text-xs rounded-lg transition-colors shadow-sm"
               >
                 Apply Range
               </button>

@@ -7,7 +7,7 @@ import Topbar from './Topbar';
  * Serves as the primary application scaffold across all platform pages:
  * - Persistent or responsive Sidebar
  * - Sticky Topbar with full actions & profile
- * - Deep dark background `#0B0F19`
+ * - Deep dark background `#060B13`
  * - Platform disclaimer footer bar
  */
 export default function DashboardLayout({
@@ -23,7 +23,7 @@ export default function DashboardLayout({
   return (
     <div className="flex min-h-screen bg-[#0B0F19] text-slate-100 antialiased font-sans">
       {/* Desktop Sidebar */}
-      <div className="hidden lg:block">
+      <div className="hidden lg:flex flex-shrink-0 z-30">
         <Sidebar />
       </div>
 
@@ -34,7 +34,7 @@ export default function DashboardLayout({
             className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity"
             onClick={() => setMobileSidebarOpen(false)}
           />
-          <div className="relative z-10">
+          <div className="relative z-10 flex overflow-y-auto">
             <Sidebar onCloseMobile={() => setMobileSidebarOpen(false)} />
           </div>
         </div>
@@ -56,8 +56,8 @@ export default function DashboardLayout({
 
           {/* Bottom Platform Disclaimer Bar */}
           {showDisclaimer && (
-            <footer className="mt-10 pt-6 pb-4 border-t border-[#1B2638]/60 text-center select-none">
-              <p className="text-[10px] sm:text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
+            <footer className="mt-8 pt-4 pb-4 border-t border-[#1E2638] text-center select-none">
+              <p className="text-[10px] sm:text-[11px] font-medium tracking-wider text-slate-400 uppercase">
                 {disclaimerText}
               </p>
               {secondaryDisclaimer && (

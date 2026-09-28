@@ -1,10 +1,10 @@
 export const RISK_COLORS = {
   low: {
-    bg: 'rgba(0, 210, 132, 0.12)',
-    text: '#00D284',
-    border: 'rgba(0, 210, 132, 0.3)',
+    bg: 'rgba(0, 191, 165, 0.12)',
+    text: '#00BFA5',
+    border: 'rgba(0, 191, 165, 0.3)',
     label: 'Low',
-    badgeClass: 'bg-emerald-500/10 text-[#00D284] border border-emerald-500/30',
+    badgeClass: 'bg-emerald-500/10 text-[#00BFA5] border border-emerald-500/30',
   },
   medium: {
     bg: 'rgba(245, 158, 11, 0.12)',

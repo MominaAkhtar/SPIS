@@ -17,19 +17,19 @@ export default function Button({
   ...props
 }) {
   const baseStyles =
-    'inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-150 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#060B13] disabled:opacity-50 disabled:cursor-not-allowed select-none';
+    'inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-150 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0B0F19] disabled:opacity-50 disabled:cursor-not-allowed select-none';
 
   const variants = {
     primary:
-      'bg-[#00D284] text-[#061510] hover:bg-[#05DF8E] active:bg-[#00B873] focus:ring-[#00D284] shadow-md shadow-[#00D284]/20',
+      'bg-gradient-to-r from-[#00BFA5] to-[#2DCCA7] text-white hover:brightness-110 active:brightness-95 focus:ring-[#00BFA5] shadow-md shadow-[#00BFA5]/20',
     secondary:
-      'bg-[#0D1527] border border-[#172338] text-slate-200 hover:bg-[#131F35] hover:text-white hover:border-[#223654] focus:ring-slate-500',
+      'bg-[#111827] border border-[#1B2638] text-slate-200 hover:bg-[#131F35] hover:text-white hover:border-[#263954] focus:ring-slate-500',
     elevated:
-      'bg-[#111D33] border border-[#1E2D48] text-white hover:bg-[#162540] hover:border-[#2D4369] focus:ring-blue-500',
+      'bg-[#152033] border border-[#1E2D48] text-white hover:bg-[#1A2840] hover:border-[#2D4369] focus:ring-blue-500',
     outline:
-      'border border-[#00D284]/40 text-[#00D284] hover:bg-[#00D284]/10 focus:ring-[#00D284]',
+      'border border-[#00BFA5]/40 text-[#00BFA5] hover:bg-[#00BFA5]/10 focus:ring-[#00BFA5]',
     ghost:
-      'text-slate-300 hover:text-white hover:bg-[#111D33] focus:ring-slate-500',
+      'text-slate-300 hover:text-white hover:bg-[#152033] focus:ring-slate-500',
     danger:
       'bg-[#EF4444] text-white hover:bg-rose-600 focus:ring-rose-500 shadow-md shadow-rose-600/20',
   };

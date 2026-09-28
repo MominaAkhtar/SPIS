@@ -12,9 +12,9 @@ export default function Badge({
   className = '',
 }) {
   const variants = {
-    default: 'bg-[#111D33] text-slate-300 border border-[#1E2D48]',
-    primary: 'bg-[#00D284]/15 text-[#00D284] border border-[#00D284]/30',
-    low: 'bg-emerald-500/15 text-[#00D284] border border-emerald-500/30',
+    default: 'bg-[#152033] text-slate-300 border border-[#1E2D48]',
+    primary: 'bg-[#00BFA5]/15 text-[#00BFA5] border border-[#00BFA5]/30',
+    low: 'bg-emerald-500/15 text-[#00BFA5] border border-emerald-500/30',
     medium: 'bg-amber-500/15 text-amber-400 border border-amber-500/30',
     high: 'bg-orange-500/15 text-orange-400 border border-orange-500/30',
     critical: 'bg-rose-500/15 text-rose-400 border border-rose-500/30',
@@ -24,8 +24,8 @@ export default function Badge({
 
   const dotColors = {
     default: 'bg-slate-400',
-    primary: 'bg-[#00D284]',
-    low: 'bg-[#00D284]',
+    primary: 'bg-[#00BFA5]',
+    low: 'bg-[#00BFA5]',
     medium: 'bg-amber-400',
     high: 'bg-orange-400',
     critical: 'bg-rose-400',

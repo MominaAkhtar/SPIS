@@ -4,16 +4,29 @@ export const apiClient = {
   baseUrl: ENV.API_BASE_URL,
 
   async request(endpoint, options = {}) {
+    const token =
+      localStorage.getItem('spis_token') || sessionStorage.getItem('spis_token');
+
+    const headers = {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...options.headers,
+    };
+
     const response = await fetch(`${this.baseUrl}${endpoint}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        ...options.headers,
-      },
+      headers,
       ...options,
     });
 
     if (!response.ok) {
-      throw new Error(`API error: ${response.statusText}`);
+      let errorMessage = `API error: ${response.statusText}`;
+      try {
+        const errorData = await response.json();
+        if (errorData?.message) errorMessage = errorData.message;
+      } catch {
+        // Fallback to response.statusText
+      }
+      throw new Error(errorMessage);
     }
 
     return response.json();

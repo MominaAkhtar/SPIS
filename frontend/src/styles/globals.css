@@ -54,3 +54,51 @@ body {
 .font-mono-numbers {
   font-feature-settings: 'tnum' on, 'lnum' on;
 }
+
+/* SPIS Splash Animations */
+@keyframes spisNeedleRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spis-needle-spin {
+  transform-origin: 78px 52.7969px;
+  animation: spisNeedleRotate 4s linear infinite;
+}
+
+@keyframes spisScanSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spisPulseGlow {
+  0%, 100% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 3px rgba(0, 191, 165, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(0, 191, 165, 0.95)) drop-shadow(0 0 16px rgba(0, 191, 165, 0.45));
+  }
+}
+
+.spis-loading-line-glow {
+  background: linear-gradient(90deg, rgba(0, 191, 165, 0) 0%, #00BFA5 50%, rgba(0, 191, 165, 0) 100%);
+  animation: spisPulseGlow 2.4s ease-in-out infinite;
+}
+
+.spis-loading-sweep {
+  animation: spisScanSweep 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+

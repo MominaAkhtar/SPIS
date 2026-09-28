@@ -2,102 +2,146 @@ import React from 'react';
 
 /**
  * SPIS Logo Component
- * Matches the official Societal Polarization Intelligence System branding.
- * Supports horizontal (sidebar/header), vertical (auth/splash), and icon-only variants.
+ * Renders the official SPIS compass mark.
+ * Supports:
+ * - size: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+ * - animated: boolean (animates/rotates the compass needle)
+ * - variant: 'icon' | 'horizontal'
+ * - showSubtitle: boolean (for horizontal variant)
+ * - tileRadius: corner radius of the teal square (default 16 to match brand specs)
  */
 export default function Logo({
-  variant = 'horizontal',
-  size = 'md',
-  showSubtitle = true,
+  size = 80,
+  animated = false,
+  variant = 'icon',
+  showSubtitle = false,
+  tileRadius = 16,
   className = '',
 }) {
-  const iconSizes = {
-    sm: 'w-7 h-7',
-    md: 'w-8 h-8',
-    lg: 'w-12 h-12',
-    xl: 'w-16 h-16',
+  const sizeMap = {
+    xs: 24,
+    sm: 32,
+    md: 48,
+    lg: 80,
+    xl: 88,
   };
 
-  const titleSizes = {
-    sm: 'text-base font-bold',
-    md: 'text-lg font-extrabold',
-    lg: 'text-2xl font-black',
-    xl: 'text-3xl font-black',
-  };
+  const numericSize = typeof size === 'string' ? sizeMap[size] || 80 : size;
 
-  const subtitleSizes = {
-    sm: 'text-[7px]',
-    md: 'text-[8px]',
-    lg: 'text-[10px]',
-    xl: 'text-xs',
-  };
-
-  // Modern SVG Radar/Compass Reticle matching the SPIS brand mark
-  const LogoIcon = () => (
-    <div
-      className={`${iconSizes[size] || iconSizes.md} rounded-lg bg-gradient-to-br from-[#00E590] via-[#00D284] to-[#009E60] p-[2px] flex items-center justify-center shadow-lg shadow-[#00D284]/20 flex-shrink-0`}
+  const svgIcon = (
+    <svg
+      className={`select-none ${className}`}
+      width={numericSize}
+      height={numericSize}
+      viewBox="38 13 80 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ overflow: 'visible' }}
+      role="img"
+      aria-label="SPIS logo"
     >
-      <div className="w-full h-full rounded-[6px] bg-[#00D284] flex items-center justify-center text-[#061510]">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-[70%] h-[70%]"
+      {/* teal tile */}
+      <rect x="38" y="13" width="80" height="80" rx={tileRadius} fill="#00BFA5" />
+
+      {/* soft teal glow beneath the tile */}
+      <g filter="url(#spis-logo-glow)">
+        <rect
+          x="38"
+          y="13"
+          width="80"
+          height="80"
+          rx={tileRadius}
+          fill="white"
+          fillOpacity="0.01"
+          shapeRendering="crispEdges"
+        />
+      </g>
+
+      {/* compass ring */}
+      <rect
+        x="50.5"
+        y="25.2969"
+        width="55"
+        height="55"
+        rx="27.5"
+        fill="#00BFA5"
+        stroke="white"
+        strokeWidth="5"
+      />
+
+      {/* compass needle */}
+      <g
+        className={animated ? 'spis-needle-spin' : undefined}
+        style={animated ? { transformOrigin: '78px 52.7969px' } : undefined}
+      >
+        <path
+          d="M65.1429 63.7779L73.0233 46.7222L91.1884 41.9231L83.3079 58.9789L65.1429 63.7779Z"
+          fill="white"
+        />
+        {animated && (
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 78 52.7969"
+            to="360 78 52.7969"
+            dur="4s"
+            repeatCount="indefinite"
+          />
+        )}
+      </g>
+
+      {/* center pivot */}
+      <rect x="75" y="49.7969" width="6" height="6" rx="3" fill="#00BFA5" />
+
+      <defs>
+        <filter
+          id="spis-logo-glow"
+          x="0"
+          y="0"
+          width="156"
+          height="156"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
         >
-          {/* Compass / Radar target circle with needle */}
-          <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
-          <polygon points="12 4 14.5 10.5 20 12 14.5 13.5 12 20 9.5 13.5 4 12 9.5 10.5 12 4" fill="currentColor" />
-          <circle cx="12" cy="12" r="1.5" fill="#040C08" />
-        </svg>
-      </div>
-    </div>
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feMorphology radius="12" operator="erode" in="SourceAlpha" result="effect1_dropShadow" />
+          <feOffset dy="25" />
+          <feGaussianBlur stdDeviation="25" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0.74902 0 0 0 0 0.647059 0 0 0 0.25 0"
+          />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+        </filter>
+      </defs>
+    </svg>
   );
 
-  if (variant === 'icon-only') {
+  if (variant === 'horizontal') {
     return (
-      <div className={`inline-flex items-center ${className}`}>
-        <LogoIcon />
+      <div className="flex items-center gap-3">
+        {svgIcon}
+        <div className="flex flex-col">
+          <span className="font-bold text-white text-base tracking-wide leading-tight">
+            SPIS
+          </span>
+          {showSubtitle && (
+            <span className="text-[10px] text-slate-400 font-medium tracking-wider uppercase leading-none mt-0.5">
+              Societal Polarization Intelligence System
+            </span>
+          )}
+        </div>
       </div>
     );
   }
 
-  if (variant === 'vertical') {
-    return (
-      <div className={`flex flex-col items-center text-center ${className}`}>
-        <LogoIcon />
-        <span className={`mt-3 ${titleSizes[size]} text-white tracking-wider font-sans`}>
-          SPIS
-        </span>
-        {showSubtitle && (
-          <span
-            className={`mt-1 ${subtitleSizes[size]} font-semibold text-[#00D284] tracking-[0.2em] uppercase`}
-          >
-            Societal Polarization Intelligence System
-          </span>
-        )}
-      </div>
-    );
-  }
-
-  // Default: Horizontal
-  return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      <LogoIcon />
-      <div className="flex flex-col leading-tight min-w-0">
-        <span className={`${titleSizes[size]} text-white tracking-wider font-sans`}>
-          SPIS
-        </span>
-        {showSubtitle && (
-          <span
-            className={`${subtitleSizes[size]} font-semibold text-emerald-400/90 tracking-widest uppercase truncate`}
-          >
-            Societal Polarization Intelligence System
-          </span>
-        )}
-      </div>
-    </div>
-  );
+  return svgIcon;
 }

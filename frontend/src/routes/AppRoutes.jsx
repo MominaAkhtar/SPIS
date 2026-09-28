@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 import ProtectedRoute from './ProtectedRoute';
 
+import SplashScreen from '../features/auth/pages/SplashScreen';
 import DashboardPage from '../features/dashboard/pages/DashboardPage';
 import TopicMonitoringPage from '../features/topic-monitoring/pages/TopicMonitoringPage';
 import ContentAnalysisPage from '../features/content-analysis/pages/ContentAnalysisPage';
@@ -15,6 +16,11 @@ export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Splash screen at root */}
+        <Route path={ROUTES.SPLASH} element={<SplashScreen />} />
+        <Route path="/splash" element={<SplashScreen />} />
+
+        {/* Authentication */}
         <Route path={ROUTES.LOGIN} element={<LoginPage />} />
         <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
 

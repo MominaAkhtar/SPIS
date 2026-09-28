@@ -1,15 +1,22 @@
 import React from 'react';
-import Badge from '../../../components/common/Badge';
+import HorizontalBarChart from '../../../components/charts/HorizontalBarChart';
 
-export default function RiskyTopicsList({ topics = [] }) {
+/**
+ * SPIS RiskyTopicsList Component
+ * Leverages the reusable HorizontalBarChart to display priority polarization vectors.
+ */
+export default function RiskyTopicsList({
+  topics = [
+    { id: 1, rank: 1, label: 'Polarization Discourse', value: 88, color: 'from-rose-500 to-orange-500' },
+    { id: 2, rank: 2, label: 'Political Corruption', value: 72, color: 'from-orange-500 to-amber-500' },
+    { id: 3, rank: 3, label: 'Social Inequality', value: 65, color: 'from-cyan-500 to-blue-500' },
+    { id: 4, rank: 4, label: 'Immigration Debate', value: 48, color: 'from-[#00D284] to-teal-500' },
+  ],
+  className = '',
+}) {
   return (
-    <div className="space-y-2">
-      {topics.map((t, idx) => (
-        <div key={idx} className="flex justify-between items-center p-3 bg-gray-50 rounded-md">
-          <span className="text-sm font-medium text-gray-800">{t.name}</span>
-          <Badge variant={t.risk === 'high' ? 'danger' : 'warning'}>{t.risk}</Badge>
-        </div>
-      ))}
+    <div className={className}>
+      <HorizontalBarChart items={topics} max={100} showRank={true} showValue={true} />
     </div>
   );
 }

@@ -10,23 +10,63 @@ import NetworkAnalysisPage from '../features/network-analysis/pages/NetworkAnaly
 import AlertsPredictionsPage from '../features/alerts-predictions/pages/AlertsPredictionsPage';
 import LoginPage from '../features/auth/pages/LoginPage';
 import SignupPage from '../features/auth/pages/SignupPage';
+import SplashScreen from '../features/auth/pages/SplashScreen';
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Splash Initialization Route */}
+        <Route path={ROUTES.SPLASH} element={<SplashScreen />} />
+
+        {/* Public Authentication Routes */}
         <Route path={ROUTES.LOGIN} element={<LoginPage />} />
         <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
 
-        {/* Dashboard and main feature views */}
-        <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
-        <Route path={ROUTES.TOPIC_MONITORING} element={<TopicMonitoringPage />} />
-        <Route path={ROUTES.CONTENT_ANALYSIS} element={<ContentAnalysisPage />} />
-        <Route path={ROUTES.NETWORK_ANALYSIS} element={<NetworkAnalysisPage />} />
-        <Route path={ROUTES.ALERTS_PREDICTIONS} element={<AlertsPredictionsPage />} />
+        {/* Protected Dashboard & Analytical Modules */}
+        <Route
+          path={ROUTES.DASHBOARD}
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={ROUTES.TOPIC_MONITORING}
+          element={
+            <ProtectedRoute>
+              <TopicMonitoringPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={ROUTES.CONTENT_ANALYSIS}
+          element={
+            <ProtectedRoute>
+              <ContentAnalysisPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={ROUTES.NETWORK_ANALYSIS}
+          element={
+            <ProtectedRoute>
+              <NetworkAnalysisPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path={ROUTES.ALERTS_PREDICTIONS}
+          element={
+            <ProtectedRoute>
+              <AlertsPredictionsPage />
+            </ProtectedRoute>
+          }
+        />
 
-        {/* Fallback to Dashboard */}
-        <Route path="*" element={<Navigate to={ROUTES.DASHBOARD} replace />} />
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to={ROUTES.LOGIN} replace />} />
       </Routes>
     </BrowserRouter>
   );

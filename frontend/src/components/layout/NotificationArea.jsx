@@ -67,13 +67,13 @@ export default function NotificationArea() {
         aria-label="Notifications"
         className={`relative p-2 rounded-lg transition-all duration-150 border ${
           isOpen
-            ? 'bg-[#162540] border-[#00D284]/40 text-white'
-            : 'bg-[#0D1527] border-[#172338] text-slate-400 hover:text-white hover:bg-[#131F35] hover:border-[#223654]'
+            ? 'bg-[#1A2840] border-[#00BFA5]/40 text-white'
+            : 'bg-[#111827] border-[#1B2638] text-slate-400 hover:text-white hover:bg-[#131F35] hover:border-[#263954]'
         }`}
       >
         <Bell className="w-4 h-4" />
         {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#EF4444] text-[9px] font-bold text-white shadow-sm ring-2 ring-[#080D18]">
+          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#EF4444] text-[9px] font-bold text-white shadow-sm ring-2 ring-[#0D111E]">
             {unreadCount}
           </span>
         )}
@@ -81,9 +81,9 @@ export default function NotificationArea() {
 
       {/* Popover Dropdown */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl bg-[#0D1527] border border-[#223654] shadow-2xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl bg-[#111827] border border-[#263954] shadow-2xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-[#172338] bg-[#0A101D]">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-[#1B2638] bg-[#0A101D]">
             <div className="flex items-center gap-2">
               <span className="text-sm font-semibold text-white">Notifications</span>
               {unreadCount > 0 && (
@@ -96,7 +96,7 @@ export default function NotificationArea() {
               <button
                 type="button"
                 onClick={markAllRead}
-                className="text-xs text-[#00D284] hover:text-[#05DF8E] font-medium transition-colors"
+                className="text-xs text-[#00BFA5] hover:text-[#2DCCA7] font-medium transition-colors"
               >
                 Mark all read
               </button>
@@ -104,12 +104,12 @@ export default function NotificationArea() {
           </div>
 
           {/* List of items */}
-          <div className="max-h-80 overflow-y-auto divide-y divide-[#172338]">
+          <div className="max-h-80 overflow-y-auto divide-y divide-[#1B2638]">
             {notifications.map((item) => (
               <div
                 key={item.id}
                 className={`p-3.5 transition-colors flex gap-3 ${
-                  item.unread ? 'bg-[#0E1B33]/60 hover:bg-[#122342]' : 'hover:bg-[#111D33]'
+                  item.unread ? 'bg-[#0E1B33]/60 hover:bg-[#122342]' : 'hover:bg-[#152033]'
                 }`}
               >
                 <div className="flex-shrink-0 mt-0.5">
@@ -122,7 +122,7 @@ export default function NotificationArea() {
                       <AlertTriangle className="w-3.5 h-3.5" />
                     </span>
                   ) : (
-                    <span className="p-1.5 rounded-lg bg-emerald-500/10 text-[#00D284] border border-emerald-500/30 flex">
+                    <span className="p-1.5 rounded-lg bg-emerald-500/10 text-[#00BFA5] border border-emerald-500/30 flex">
                       <CheckCircle className="w-3.5 h-3.5" />
                     </span>
                   )}
@@ -139,11 +139,11 @@ export default function NotificationArea() {
           </div>
 
           {/* Footer */}
-          <div className="p-2 border-t border-[#172338] bg-[#0A101D] text-center">
+          <div className="p-2 border-t border-[#1B2638] bg-[#0A101D] text-center">
             <Link
               to={ROUTES.ALERTS_PREDICTIONS}
               onClick={() => setIsOpen(false)}
-              className="inline-flex items-center justify-center gap-1.5 w-full py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-[#162540] rounded-lg transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 w-full py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-[#1A2840] rounded-lg transition-colors"
             >
               <span>View all alerts & predictions</span>
               <ExternalLink className="w-3 h-3 text-slate-400" />

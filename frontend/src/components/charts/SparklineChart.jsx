@@ -71,7 +71,7 @@ export default function SparklineChart({
           cy={points[points.length - 1].y}
           r={2.5}
           fill={color}
-          stroke="#0D1527"
+          stroke="#111827"
           strokeWidth="1.5"
         />
       </svg>

@@ -18,7 +18,7 @@ export default function TermsModal({ isOpen, onClose }) {
       }
     >
       <div className="space-y-4 text-xs text-slate-300 leading-relaxed max-h-96 pr-1">
-        <div className="flex items-center gap-2 text-[#00D284] font-semibold text-sm">
+        <div className="flex items-center gap-2 text-[#00BFA5] font-semibold text-sm">
           <ShieldCheck className="w-5 h-5 flex-shrink-0" />
           <span>Intelligence Platform Security & Terms</span>
         </div>

@@ -204,7 +204,7 @@ export default function SignupForm({ onSubmitSuccess }) {
               <button
                 type="button"
                 onClick={() => setTermsModalOpen(true)}
-                className="bg-transparent border-0 p-0 inline cursor-pointer text-[#00D284] hover:text-[#20E29B] font-medium underline underline-offset-2 hover:underline focus:outline-none"
+                className="bg-transparent border-0 p-0 inline cursor-pointer text-[#00BFA5] hover:text-[#2DCCA7] font-medium hover:underline underline-offset-2 focus:outline-none"
               >
                 Terms of Service
               </button>{' '}
@@ -212,7 +212,7 @@ export default function SignupForm({ onSubmitSuccess }) {
               <button
                 type="button"
                 onClick={() => setTermsModalOpen(true)}
-                className="bg-transparent border-0 p-0 inline cursor-pointer text-[#00D284] hover:text-[#20E29B] font-medium underline underline-offset-2 hover:underline focus:outline-none"
+                className="bg-transparent border-0 p-0 inline cursor-pointer text-[#00BFA5] hover:text-[#2DCCA7] font-medium hover:underline underline-offset-2 focus:outline-none"
               >
                 Privacy Policy
               </button>
@@ -227,7 +227,7 @@ export default function SignupForm({ onSubmitSuccess }) {
           size="md"
           loading={loading}
           disabled={loading}
-          className="w-full mt-3 font-bold py-2.5 shadow-md shadow-[#00D284]/20"
+          className="w-full mt-3 font-bold py-2.5 shadow-md shadow-[#00BFA5]/20"
         >
           Create Account
         </Button>

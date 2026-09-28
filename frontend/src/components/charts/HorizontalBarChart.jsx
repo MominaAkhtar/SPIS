@@ -60,10 +60,10 @@ export default function HorizontalBarChart({
             </div>
 
             {/* Bar track & fill */}
-            <div className={`w-full ${barHeight} bg-[#111D33] rounded-full overflow-hidden relative`}>
+            <div className={`w-full ${barHeight} bg-[#152033] rounded-full overflow-hidden relative`}>
               <div
                 className={`h-full rounded-full transition-all duration-500 ease-out bg-gradient-to-r ${
-                  item.color || 'from-[#00D284] to-[#00C7FF]'
+                  item.color || 'from-[#00BFA5] to-[#00C7FF]'
                 }`}
                 style={{ width: `${percentage}%` }}
               />

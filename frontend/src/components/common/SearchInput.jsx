@@ -32,7 +32,7 @@ export default function SearchInput({
         value={value || ''}
         onChange={(e) => onChange?.(e.target.value)}
         placeholder={placeholder}
-        className={`w-full bg-[#09101C] text-slate-100 placeholder-slate-500 border border-[#172338] rounded-lg focus:outline-none focus:border-[#00D284] focus:ring-1 focus:ring-[#00D284] transition-all ${
+        className={`w-full bg-[#111416] text-slate-100 placeholder-slate-500 border border-[#1B2638] rounded-lg focus:outline-none focus:border-[#00BFA5] focus:ring-1 focus:ring-[#00BFA5] transition-all ${
           sizeStyles[size] || sizeStyles.md
         }`}
       />
@@ -48,7 +48,7 @@ export default function SearchInput({
           <X className="w-3.5 h-3.5" />
         </button>
       ) : shortcut ? (
-        <span className="absolute right-2.5 px-1.5 py-0.5 text-[10px] font-mono text-slate-500 bg-[#111D33] border border-[#1E2D48] rounded">
+        <span className="absolute right-2.5 px-1.5 py-0.5 text-[10px] font-mono text-slate-500 bg-[#152033] border border-[#1E2D48] rounded">
           {shortcut}
         </span>
       ) : null}

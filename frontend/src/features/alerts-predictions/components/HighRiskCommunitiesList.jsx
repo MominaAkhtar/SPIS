@@ -35,10 +35,10 @@ export default function HighRiskCommunitiesList({
       {communities.map((c) => (
         <div
           key={c.id}
-          className="p-3 rounded-xl bg-[#09101C] border border-[#172338] hover:border-[#223654] transition-all flex items-center justify-between gap-3 group"
+          className="p-3 rounded-xl bg-[#111416] border border-[#1B2638] hover:border-[#263954] transition-all flex items-center justify-between gap-3 group"
         >
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className="p-2 rounded-lg bg-[#111D33] border border-[#1E2D48] text-slate-400 group-hover:text-white transition-colors flex-shrink-0">
+            <div className="p-2 rounded-lg bg-[#152033] border border-[#1E2D48] text-slate-400 group-hover:text-white transition-colors flex-shrink-0">
               <Users className="w-3.5 h-3.5" />
             </div>
             <div className="min-w-0">

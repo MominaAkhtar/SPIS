@@ -15,7 +15,7 @@ export default function GoogleButton({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`w-full bg-[#111D33] hover:bg-[#162540] border border-[#1E2D48] hover:border-[#2D4369] text-white font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2.5 transition-all duration-150 text-xs sm:text-sm shadow-sm select-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.99] ${className}`}
+      className={`w-full bg-[#152033] hover:bg-[#1A2840] border border-[#1E2D48] hover:border-[#2D4369] text-white font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2.5 transition-all duration-150 text-xs sm:text-sm shadow-sm select-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.99] ${className}`}
     >
       <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24">
         <path

@@ -7,7 +7,7 @@ import Topbar from './Topbar';
  * Serves as the primary application scaffold across all platform pages:
  * - Persistent or responsive Sidebar
  * - Sticky Topbar with full actions & profile
- * - Deep dark background `#060B13`
+ * - Deep dark background `#0B0F19`
  * - Platform disclaimer footer bar
  */
 export default function DashboardLayout({
@@ -21,7 +21,7 @@ export default function DashboardLayout({
   const [filterActive, setFilterActive] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-[#060B13] text-slate-100 antialiased font-sans">
+    <div className="flex min-h-screen bg-[#0B0F19] text-slate-100 antialiased font-sans">
       {/* Desktop Sidebar */}
       <div className="hidden lg:block">
         <Sidebar />
@@ -56,7 +56,7 @@ export default function DashboardLayout({
 
           {/* Bottom Platform Disclaimer Bar */}
           {showDisclaimer && (
-            <footer className="mt-10 pt-6 pb-4 border-t border-[#172338]/60 text-center select-none">
+            <footer className="mt-10 pt-6 pb-4 border-t border-[#1B2638]/60 text-center select-none">
               <p className="text-[10px] sm:text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
                 {disclaimerText}
               </p>

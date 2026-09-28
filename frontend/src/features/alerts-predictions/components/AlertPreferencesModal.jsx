@@ -55,10 +55,10 @@ export default function AlertPreferencesModal({ isOpen, onClose }) {
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span className="font-semibold text-slate-300 flex items-center gap-1.5">
-              <Sliders className="w-3.5 h-3.5 text-[#00D284]" />
+              <Sliders className="w-3.5 h-3.5 text-[#00BFA5]" />
               Polarization Risk Sensitivity Threshold
             </span>
-            <span className="font-mono font-bold text-[#00D284]">
+            <span className="font-mono font-bold text-[#00BFA5]">
               {threshold}/100
             </span>
           </div>
@@ -68,7 +68,7 @@ export default function AlertPreferencesModal({ isOpen, onClose }) {
             max="95"
             value={threshold}
             onChange={(e) => setThreshold(Number(e.target.value))}
-            className="w-full h-1.5 bg-[#111D33] rounded-lg appearance-none cursor-pointer accent-[#00D284]"
+            className="w-full h-1.5 bg-[#152033] rounded-lg appearance-none cursor-pointer accent-[#00BFA5]"
           />
           <div className="flex justify-between text-[10px] text-slate-500 font-mono">
             <span>Relaxed (30)</span>
@@ -78,7 +78,7 @@ export default function AlertPreferencesModal({ isOpen, onClose }) {
         </div>
 
         {/* Trigger Types */}
-        <div className="space-y-2 pt-2 border-t border-[#172338]">
+        <div className="space-y-2 pt-2 border-t border-[#1B2638]">
           <span className="font-semibold text-slate-300 block mb-2">
             Active Anomaly Detectors
           </span>
@@ -115,7 +115,7 @@ export default function AlertPreferencesModal({ isOpen, onClose }) {
         </div>
 
         {/* Notification Channels */}
-        <div className="space-y-2 pt-2 border-t border-[#172338]">
+        <div className="space-y-2 pt-2 border-t border-[#1B2638]">
           <span className="font-semibold text-slate-300 block mb-2">
             Delivery Channels
           </span>

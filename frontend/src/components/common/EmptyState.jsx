@@ -14,9 +14,9 @@ export default function EmptyState({
 }) {
   return (
     <div
-      className={`text-center py-12 px-4 rounded-xl border border-dashed border-[#172338] bg-[#0A101D]/50 flex flex-col items-center justify-center ${className}`}
+      className={`text-center py-12 px-4 rounded-xl border border-dashed border-[#1B2638] bg-[#0A101D]/50 flex flex-col items-center justify-center ${className}`}
     >
-      <div className="p-3.5 rounded-2xl bg-[#0D1527] border border-[#1E2D48] text-slate-500 mb-3.5">
+      <div className="p-3.5 rounded-2xl bg-[#111827] border border-[#1E2D48] text-slate-500 mb-3.5">
         <Icon className="w-8 h-8 text-slate-400" />
       </div>
       <h3 className="text-sm font-bold text-slate-200 tracking-wide">{title}</h3>

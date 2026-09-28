@@ -6,7 +6,7 @@ import React from 'react';
  */
 export default function LoadingSpinner({
   size = 'md',
-  color = 'border-t-[#00D284]',
+  color = 'border-t-[#00BFA5]',
   label,
   className = '',
 }) {
@@ -23,7 +23,7 @@ export default function LoadingSpinner({
       <div
         className={`${
           sizes[size] || sizes.md
-        } border-[#172338] ${color} rounded-full animate-spin`}
+        } border-[#1B2638] ${color} rounded-full animate-spin`}
       />
       {label && (
         <span className="text-xs font-semibold text-slate-400 tracking-wider uppercase animate-pulse">

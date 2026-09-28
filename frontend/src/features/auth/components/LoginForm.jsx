@@ -163,7 +163,7 @@ export default function LoginForm({ onSubmitSuccess }) {
             <button
               type="button"
               onClick={() => setForgotModalOpen(true)}
-              className="text-[#00D284] hover:text-[#20E29B] font-medium transition-colors hover:underline"
+              className="text-[#00BFA5] hover:text-[#2DCCA7] font-medium transition-colors hover:underline"
             >
               Forgot password?
             </button>
@@ -200,7 +200,7 @@ export default function LoginForm({ onSubmitSuccess }) {
           size="md"
           loading={loading}
           disabled={loading || lockoutTime > 0}
-          className="w-full mt-2 font-bold py-2.5 shadow-md shadow-[#00D284]/20"
+          className="w-full mt-2 font-bold py-2.5 shadow-md shadow-[#00BFA5]/20"
         >
           {lockoutTime > 0 ? `Locked (${lockoutTime}s)` : 'Sign In'}
         </Button>
@@ -208,9 +208,9 @@ export default function LoginForm({ onSubmitSuccess }) {
         {/* Divider: OR CONTINUE WITH */}
         <div className="relative my-4 py-1 flex items-center justify-center">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-[#172338]" />
+            <div className="w-full border-t border-[#1B2638]" />
           </div>
-          <div className="relative bg-[#0D1527] px-3">
+          <div className="relative bg-[#111827] px-3">
             <span className="text-[10px] font-semibold tracking-wider text-slate-500 uppercase font-mono">
               Or continue with
             </span>

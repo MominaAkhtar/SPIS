@@ -46,7 +46,7 @@ export default function AlertItem({
   return (
     <div
       onClick={onClick}
-      className={`p-3 rounded-xl bg-[#09101C] border ${style.border} transition-all duration-150 flex items-start gap-3 cursor-pointer group hover:bg-[#0D1527]`}
+      className={`p-3 rounded-xl bg-[#111416] border ${style.border} transition-all duration-150 flex items-start gap-3 cursor-pointer group hover:bg-[#111827]`}
     >
       {/* Risk Icon */}
       <div

@@ -31,7 +31,7 @@ export default function Tooltip({
       {visible && text && (
         <div
           role="tooltip"
-          className={`absolute z-50 ${positionClasses[position] || positionClasses.top} px-2.5 py-1.5 text-[11px] font-medium text-slate-200 bg-[#0A101D] border border-[#223654] rounded-lg shadow-xl whitespace-normal min-w-[120px] max-w-xs text-center pointer-events-none animate-in fade-in zoom-in-95 duration-150`}
+          className={`absolute z-50 ${positionClasses[position] || positionClasses.top} px-2.5 py-1.5 text-[11px] font-medium text-slate-200 bg-[#0A101D] border border-[#263954] rounded-lg shadow-xl whitespace-normal min-w-[120px] max-w-xs text-center pointer-events-none animate-in fade-in zoom-in-95 duration-150`}
         >
           {text}
         </div>

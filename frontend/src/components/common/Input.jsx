@@ -40,10 +40,9 @@ const Input = forwardRef(function Input(
           {label && (
             <label
               htmlFor={inputId}
-              className="block text-xs font-semibold text-slate-300 tracking-wide select-none"
+              className="block text-xs font-normal text-slate-300 tracking-wide select-none"
             >
               {label}
-              {required && <span className="text-[#00D284] ml-0.5">*</span>}
             </label>
           )}
           {labelRight && (
@@ -72,13 +71,13 @@ const Input = forwardRef(function Input(
           autoComplete={autoComplete}
           aria-invalid={!!error}
           aria-describedby={error ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined}
-          className={`w-full bg-[#09101C] text-slate-100 placeholder-slate-500 border rounded-lg text-xs sm:text-sm py-2.5 transition-all duration-150 focus:outline-none ${
+          className={`w-full bg-[#10161E] text-slate-100 placeholder-[#616161] border rounded-lg text-xs sm:text-sm py-2.5 transition-all duration-150 focus:outline-none ${
             leftIcon ? 'pl-9' : 'pl-3.5'
           } ${isPassword ? 'pr-10' : 'pr-3.5'} ${
             error
               ? 'border-rose-500/80 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 text-rose-100'
-              : 'border-[#172338] focus:border-[#00D284] focus:ring-1 focus:ring-[#00D284]'
-          } ${disabled ? 'opacity-50 cursor-not-allowed bg-[#080D18]' : ''} ${inputClassName}`}
+              : 'border-[#20242A] focus:border-[#00BFA5] focus:ring-1 focus:ring-[#00BFA5]'
+          } ${disabled ? 'opacity-50 cursor-not-allowed bg-[#0D111E]' : ''} ${inputClassName}`}
           {...props}
         />
 

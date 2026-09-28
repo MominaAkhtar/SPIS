@@ -13,8 +13,8 @@ export default function StatCard({
   isPositive,
   trendText,
   icon: Icon,
-  iconColor = 'text-[#00D284]',
-  iconBg = 'bg-[#00D284]/10 border-[#00D284]/20',
+  iconColor = 'text-[#00BFA5]',
+  iconBg = 'bg-[#00BFA5]/10 border-[#00BFA5]/20',
   badge,
   badgeVariant,
   tooltip,
@@ -22,7 +22,7 @@ export default function StatCard({
 }) {
   return (
     <div
-      className={`bg-[#0D1527] border border-[#172338] hover:border-[#223654] transition-all duration-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm relative group overflow-hidden ${className}`}
+      className={`bg-[#111827] border border-[#1B2638] hover:border-[#263954] transition-all duration-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm relative group overflow-hidden ${className}`}
     >
       {/* Top row: Label & Icon / Badge */}
       <div className="flex items-start justify-between gap-2 mb-2">
@@ -66,12 +66,12 @@ export default function StatCard({
 
       {/* Bottom row: Trend indicator or subtext */}
       {(change !== undefined || trendText) && (
-        <div className="mt-2.5 pt-2 border-t border-[#172338]/60 flex items-center justify-between text-xs">
+        <div className="mt-2.5 pt-2 border-t border-[#1B2638]/60 flex items-center justify-between text-xs">
           {change !== undefined ? (
             <div className="flex items-center gap-1">
               <span
                 className={`inline-flex items-center text-[11px] font-semibold ${
-                  isPositive ? 'text-[#00D284]' : 'text-rose-400'
+                  isPositive ? 'text-[#00BFA5]' : 'text-rose-400'
                 }`}
               >
                 {isPositive ? (

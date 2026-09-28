@@ -18,7 +18,7 @@ export default function LineChart({
     {
       key: 'predicted',
       name: 'Predicted Risk / Forecast',
-      color: '#00D284',
+      color: '#00BFA5',
       isDashed: true,
       strokeDasharray: '4 4',
       showDots: true,
@@ -39,7 +39,7 @@ export default function LineChart({
   if (!data || data.length === 0) {
     return (
       <div
-        className={`w-full flex items-center justify-center bg-[#09101C] rounded-xl border border-[#172338] text-slate-500 text-xs ${className}`}
+        className={`w-full flex items-center justify-center bg-[#111416] rounded-xl border border-[#1B2638] text-slate-500 text-xs ${className}`}
         style={{ height }}
       >
         No telemetry data available.
@@ -137,7 +137,7 @@ export default function LineChart({
                   y1={y}
                   x2={svgWidth - paddingRight}
                   y2={y}
-                  stroke="#172338"
+                  stroke="#1B2638"
                   strokeWidth="1"
                   strokeDasharray="2 4"
                 />
@@ -196,7 +196,7 @@ export default function LineChart({
                     cy={pt.y}
                     r={3}
                     fill={s.color}
-                    stroke="#0D1527"
+                    stroke="#111827"
                     strokeWidth="1.5"
                     className="transition-transform duration-150"
                   />
@@ -232,7 +232,7 @@ export default function LineChart({
               x={x}
               y={svgHeight - 10}
               textAnchor="middle"
-              fill={isHovered ? '#00D284' : '#64748B'}
+              fill={isHovered ? '#00BFA5' : '#64748B'}
               fontSize="9.5"
               fontFamily="JetBrains Mono, monospace"
               fontWeight={isHovered ? '700' : '500'}
@@ -269,13 +269,13 @@ export default function LineChart({
       {/* Interactive Tooltip Card */}
       {hoverItem && hoverX !== null && (
         <div
-          className="absolute z-20 pointer-events-none transform -translate-x-1/2 -translate-y-full bg-[#0D1527] border border-[#223654] rounded-lg shadow-xl px-3 py-2 text-xs min-w-[130px]"
+          className="absolute z-20 pointer-events-none transform -translate-x-1/2 -translate-y-full bg-[#111827] border border-[#263954] rounded-lg shadow-xl px-3 py-2 text-xs min-w-[130px]"
           style={{
             left: `${(hoverX / svgWidth) * 100}%`,
             top: '35%',
           }}
         >
-          <div className="font-mono text-[10px] text-slate-400 font-semibold border-b border-[#172338] pb-1 mb-1.5 flex items-center justify-between">
+          <div className="font-mono text-[10px] text-slate-400 font-semibold border-b border-[#1B2638] pb-1 mb-1.5 flex items-center justify-between">
             <span>{hoverItem.date || hoverItem.label}</span>
           </div>
 

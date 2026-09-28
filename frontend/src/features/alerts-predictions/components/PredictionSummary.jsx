@@ -12,14 +12,14 @@ export default function PredictionSummary({
 }) {
   return (
     <div
-      className={`rounded-xl bg-[#09101C] border border-[#172338] p-3.5 sm:p-4 flex items-start gap-3 select-none ${className}`}
+      className={`rounded-xl bg-[#111416] border border-[#1B2638] p-3.5 sm:p-4 flex items-start gap-3 select-none ${className}`}
     >
-      <div className="p-2 rounded-lg bg-[#00D284]/10 border border-[#00D284]/20 text-[#00D284] flex-shrink-0 mt-0.5">
+      <div className="p-2 rounded-lg bg-[#00BFA5]/10 border border-[#00BFA5]/20 text-[#00BFA5] flex-shrink-0 mt-0.5">
         <Sparkles className="w-4 h-4" />
       </div>
 
       <div className="flex-1 min-w-0">
-        <h4 className="text-[10px] font-mono font-bold tracking-[0.2em] text-[#00D284] uppercase">
+        <h4 className="text-[10px] font-mono font-bold tracking-[0.2em] text-[#00BFA5] uppercase">
           {title}
         </h4>
         <p className="text-xs text-slate-300 leading-relaxed mt-1">

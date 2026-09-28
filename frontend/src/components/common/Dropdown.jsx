@@ -45,8 +45,8 @@ export default function Dropdown({
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center justify-between gap-2 rounded-lg border font-medium transition-all ${
           isOpen
-            ? 'bg-[#162540] border-[#00D284]/50 text-white'
-            : 'bg-[#0D1527] border-[#172338] text-slate-200 hover:bg-[#131F35] hover:border-[#223654]'
+            ? 'bg-[#1A2840] border-[#00BFA5]/50 text-white'
+            : 'bg-[#111827] border-[#1B2638] text-slate-200 hover:bg-[#131F35] hover:border-[#263954]'
         } ${sizeClasses[size] || sizeClasses.md}`}
       >
         <div className="flex items-center gap-1.5 truncate">
@@ -64,7 +64,7 @@ export default function Dropdown({
         <div
           className={`absolute ${
             align === 'right' ? 'right-0' : 'left-0'
-          } mt-1.5 min-w-[160px] max-w-xs max-h-60 overflow-y-auto rounded-xl bg-[#0D1527] border border-[#223654] shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-top-2 duration-150`}
+          } mt-1.5 min-w-[160px] max-w-xs max-h-60 overflow-y-auto rounded-xl bg-[#111827] border border-[#263954] shadow-2xl z-50 p-1 animate-in fade-in slide-in-from-top-2 duration-150`}
         >
           {options.map((option, idx) => {
             const optVal = option.value !== undefined ? option.value : option;
@@ -81,12 +81,12 @@ export default function Dropdown({
                 }}
                 className={`flex items-center justify-between w-full px-3 py-1.5 rounded-lg text-xs transition-colors ${
                   isSelected
-                    ? 'bg-[#00D284]/15 text-[#00D284] font-semibold'
-                    : 'text-slate-300 hover:bg-[#162540] hover:text-white'
+                    ? 'bg-[#00BFA5]/15 text-[#00BFA5] font-semibold'
+                    : 'text-slate-300 hover:bg-[#1A2840] hover:text-white'
                 }`}
               >
                 <span className="truncate">{optLabel}</span>
-                {isSelected && <Check className="w-3.5 h-3.5 text-[#00D284] flex-shrink-0 ml-2" />}
+                {isSelected && <Check className="w-3.5 h-3.5 text-[#00BFA5] flex-shrink-0 ml-2" />}
               </button>
             );
           })}

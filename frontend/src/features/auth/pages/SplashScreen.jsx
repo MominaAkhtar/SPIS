@@ -1,65 +1,83 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../../components/common/Logo';
+import SplashLoadingBar from '../components/SplashLoadingBar';
 import { ROUTES } from '../../../constants/routes';
 
-export default function SplashScreen({ onComplete, autoRedirect = true }) {
+/**
+ * SPIS Splash Screen
+ * Exact reproduction of the official SPIS splash screen visual reference:
+ * - Solid dark background: #0B0F19
+ * - Centered SPIS compass logo with smooth animated rotating needle
+ * - White SPIS title
+ * - Two-line subtitle:
+ *     - "SOCIETAL POLARIZATION" in #00BFA5
+ *     - "INTELLIGENCE SYSTEM" in #94A3B8
+ * - Animated 3-stop linear gradient loading line with sweep
+ * - "INITIALIZING SYSTEM..." in #616161
+ * - "PRECISION ANALYSIS ENGINE V2.4.0" at the bottom in #616161
+ */
+export default function SplashScreen({ autoRedirect = false, redirectDelay = 4000 }) {
   const navigate = useNavigate();
-  const [progress, setProgress] = useState(15);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          if (autoRedirect) {
-            setTimeout(() => {
-              if (onComplete) onComplete();
-              else navigate(ROUTES.LOGIN);
-            }, 300);
-          }
-          return 100;
-        }
-        const step = Math.floor(Math.random() * 20) + 10;
-        return Math.min(prev + step, 100);
-      });
-    }, 200);
+    if (!autoRedirect) return;
 
-    return () => clearInterval(timer);
-  }, [navigate, onComplete, autoRedirect]);
+    const timer = setTimeout(() => {
+      navigate(ROUTES.TOPIC_MONITORING);
+    }, redirectDelay);
+
+    return () => clearTimeout(timer);
+  }, [autoRedirect, redirectDelay, navigate]);
 
   return (
-    <div className="min-h-screen w-full bg-[#0B0F19] flex flex-col items-center justify-between py-12 px-4 select-none relative overflow-hidden">
-      {/* Background Cyber Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#00BFA5]/10 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Empty top spacer for centering */}
-      <div className="h-6" />
-
-      {/* Main Center Content: Logo & Progress */}
-      <div className="flex flex-col items-center text-center max-w-sm w-full z-10">
-        <Logo variant="vertical" size="xl" showSubtitle={true} />
-
-        {/* Progress Bar Container */}
-        <div className="w-64 sm:w-72 mt-12 mb-3">
-          <div className="w-full h-1 bg-[#152033] rounded-full overflow-hidden relative">
-            <div
-              className="h-full bg-gradient-to-r from-[#00BFA5] to-[#00C7FF] transition-all duration-200 rounded-full shadow-[0_0_12px_rgba(0,210,132,0.8)]"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+    <main
+      onClick={() => navigate(ROUTES.TOPIC_MONITORING)}
+      className="min-h-screen w-full bg-[#0B0F19] text-white flex flex-col items-center justify-center relative select-none overflow-hidden cursor-pointer"
+      role="main"
+      aria-label="SPIS Splash Screen"
+    >
+      {/* Centered Brand & Initializing Block */}
+      <section className="flex flex-col items-center text-center -mt-4">
+        {/* Centered SPIS Compass Logo with animated rotating needle */}
+        <div className="flex items-center justify-center">
+          <Logo size={84} animated={true} tileRadius={16} />
         </div>
 
-        {/* Initializing indicator */}
-        <p className="text-[10px] font-mono tracking-[0.25em] text-slate-400 uppercase">
-          Initializing System...
-        </p>
-      </div>
+        {/* Title */}
+        <h1 className="text-[34px] font-bold text-white tracking-[0.02em] leading-none mt-6 font-sans">
+          SPIS
+        </h1>
 
-      {/* Bottom Engine Version */}
-      <div className="z-10 text-[10px] font-mono tracking-widest text-slate-500 uppercase">
-        Precision Analysis Engine v2.4.0
-      </div>
-    </div>
+        {/* Subtitle */}
+        <div className="flex flex-col items-center text-center mt-2.5">
+          <span className="text-[11px] font-semibold text-[#00BFA5] tracking-[0.24em] uppercase leading-none">
+            SOCIETAL POLARIZATION
+          </span>
+          <span className="text-[10px] font-medium text-[#94A3B8] tracking-[0.22em] uppercase leading-none mt-1.5">
+            INTELLIGENCE SYSTEM
+          </span>
+        </div>
+
+        {/* Animated Loading Line */}
+        <div className="mt-8 flex items-center justify-center">
+          <SplashLoadingBar />
+        </div>
+
+        {/* Initializing Status */}
+        <div className="mt-[18px]">
+          <span className="text-[11px] font-medium text-[#616161] tracking-[0.26em] uppercase">
+            INITIALIZING SYSTEM...
+          </span>
+        </div>
+      </section>
+
+      {/* Bottom Precision Engine Version Tag */}
+      <footer className="absolute bottom-11 left-0 right-0 flex justify-center text-center pointer-events-none">
+        <span className="text-[10px] font-medium text-[#616161] tracking-[0.25em] uppercase">
+          PRECISION ANALYSIS ENGINE V2.4.0
+        </span>
+      </footer>
+    </main>
   );
 }

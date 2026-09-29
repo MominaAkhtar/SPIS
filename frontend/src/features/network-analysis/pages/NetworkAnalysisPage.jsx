@@ -22,9 +22,8 @@ export default function NetworkAnalysisPage() {
     if (location.pathname.includes('echo-chamber')) return 'echoChambers';
     if (location.pathname.includes('interaction')) return 'interactions';
     if (location.pathname.includes('bridge-users')) return 'bridgeUsers';
-    if (location.pathname.includes('communities')) return 'communities';
     if (location.pathname.includes('overview')) return 'overview';
-    return 'echoChambers';
+    return 'communities';
   };
 
   const [activeTab, setActiveTab] = useState(getInitialTab);
@@ -57,7 +56,7 @@ export default function NetworkAnalysisPage() {
     },
     communities: {
       title: 'Communities',
-      description: 'Analyze political clusters, key influencers, and community boundaries.',
+      description: 'Explore detected communities, their characteristics, and inter-community relationships.',
       crumb: 'Communities',
     },
     bridgeUsers: {
@@ -77,12 +76,18 @@ export default function NetworkAnalysisPage() {
     },
   };
 
-  const currentTabInfo = tabTitles[activeTab] || tabTitles.bridgeUsers;
+  const currentTabInfo = tabTitles[activeTab] || tabTitles.communities;
 
   const breadcrumbs = [
-    { label: 'Home', to: '/dashboard' },
-    { label: 'Network Analysis', to: '/network-analysis' },
-    { label: currentTabInfo.crumb },
+    { label: <span className="normal-case">Home</span>, to: '/dashboard' },
+    { label: <span className="normal-case">Network Analysis</span>, to: '/network-analysis' },
+    {
+      label: (
+        <span className="normal-case text-[#00BFA5] font-semibold">
+          {currentTabInfo.crumb}
+        </span>
+      ),
+    },
   ];
 
   return (

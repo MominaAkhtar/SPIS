@@ -1,0 +1,421 @@
+/**
+ * SPIS Content Analysis Mock Dataset
+ * Faithful recreation of the reference screenshot and prototype data.
+ */
+
+export const TOPIC_METRICS = {
+  currentTopic: 'Pakistan Elections 2026',
+  isLive: true,
+  dataSource: 'X (Twitter)',
+  language: 'English',
+  region: 'All Countries',
+  postsCount: '12.8K',
+  imagesCount: '4.2K',
+  videosCount: '1.1K',
+  engagementsCount: '68.7K',
+  analyzedSummary: {
+    totalAnalyzed: '2.4M',
+    displayRange: 'Showing 1–20 of 2,400,000 posts',
+    totalResults: '18,132',
+  },
+};
+
+export const MOCK_POSTS = [
+  {
+    id: 'post-1',
+    type: 'TEXT',
+    author: {
+      name: 'AnonUser_3487',
+      handle: '@AnonUser_3487',
+      avatar: null,
+      initials: 'AU',
+    },
+    date: 'May 14, 2025 • 10:32 AM',
+    timestamp: 1747218720000,
+    text: 'People of Pakistan are ready for real change this time! Youth will decide the future. No more corrupt politicians. #Election2026 #PakistanVotes',
+    mediaUrl: null,
+    engagements: {
+      comments: '142',
+      reposts: '512',
+      likes: '1.8K',
+      views: '32.4K',
+      rawEngagementScore: 34854,
+      rawPolarizationScore: 88,
+    },
+    sentiment: 'Negative',
+    stance: 'Oppose',
+    riskLevel: 'High',
+    topic: 'ELECTION',
+    subTopic: 'Govt. Change',
+    whyThisPost: {
+      title: 'WHY THIS POST?',
+      subtitle: 'Selected based on:',
+      reasons: [
+        {
+          label: 'Topic Relevance',
+          desc: 'Highly relevant to the selected topic',
+        },
+        {
+          label: 'Engagement',
+          desc: 'Significant interaction detected',
+        },
+        {
+          label: 'Polarization',
+          desc: 'Strong polarization indicators detected',
+        },
+      ],
+      details: 'Identified as a catalyst node driving rapid mobilization among youth-dominated digital political clusters.',
+    },
+    hoverDetails: {
+      stance: {
+        category: 'STANCE',
+        title: 'OPPOSITE - WHY?',
+        color: '#E74C3C',
+        text: 'The author criticizes the election outcome and expresses disagreement with the opposing political position.',
+      },
+      sentiment: {
+        category: 'SENTIMENT',
+        title: 'NEGATIVE - WHY?',
+        color: '#E74C3C',
+        text: 'Language contains explicit expressions of grievance, frustration, or severe distrust toward incumbent leadership.',
+      },
+      riskLevel: {
+        category: 'RISK LEVEL',
+        title: 'HIGH - WHY?',
+        color: '#E74C3C',
+        text: 'High polarization velocity detected with rapid cross-group repost spread and adversarial commentary.',
+      },
+    },
+  },
+  {
+    id: 'post-2',
+    type: 'IMAGE',
+    author: {
+      name: 'Pak_Youth_Force',
+      handle: '@Pak_Youth_Force',
+      avatar: null,
+      initials: 'PY',
+    },
+    date: 'May 14, 2025 • 09:15 AM',
+    timestamp: 1747214100000,
+    text: 'The time for change is now! #Election2026',
+    mediaUrl: '/assets/content/rally_post.jpg',
+    engagements: {
+      comments: '98',
+      reposts: '346',
+      likes: '1.2K',
+      views: '18.7K',
+      rawEngagementScore: 20344,
+      rawPolarizationScore: 82,
+    },
+    sentiment: 'Negative',
+    stance: 'Oppose',
+    riskLevel: 'High',
+    topic: 'ELECTION',
+    subTopic: 'Civil Unrest',
+    whyThisPost: {
+      title: 'WHY THIS POST?',
+      subtitle: 'Selected based on:',
+      reasons: [
+        {
+          label: 'Topic Relevance',
+          desc: 'Highly relevant to the selected topic',
+        },
+        {
+          label: 'Engagement',
+          desc: 'Significant interaction detected',
+        },
+        {
+          label: 'Polarization',
+          desc: 'Strong polarization indicators detected',
+        },
+      ],
+      details: 'Contains visual demonstration signals and slogans amplifying protest mobilization across central urban districts.',
+    },
+    hoverDetails: {
+      stance: {
+        category: 'STANCE',
+        title: 'OPPOSITE - WHY?',
+        color: '#E74C3C',
+        text: 'Visual rhetoric challenges institutional legitimacy and summons public demonstration assembly.',
+      },
+      sentiment: {
+        category: 'SENTIMENT',
+        title: 'NEGATIVE - WHY?',
+        color: '#E74C3C',
+        text: 'Imagery and text convey confrontational momentum and systemic dissatisfaction.',
+      },
+      riskLevel: {
+        category: 'RISK LEVEL',
+        title: 'HIGH - WHY?',
+        color: '#E74C3C',
+        text: 'Civil unrest imagery correlates with high friction potential and coordinated hashtag amplification.',
+      },
+    },
+  },
+  {
+    id: 'post-3',
+    type: 'VIDEO',
+    author: {
+      name: 'NewsUpdatePK',
+      handle: '@NewsUpdatePK',
+      avatar: null,
+      initials: 'NU',
+    },
+    date: 'May 13, 2025 • 07:45 PM',
+    timestamp: 1747165500000,
+    text: "Leader's speech at the rally today. Full video. #Election2026 #PakistaniVotes",
+    mediaUrl: '/assets/content/speech_post.jpg',
+    videoDuration: '12:45',
+    engagements: {
+      comments: '287',
+      reposts: '865',
+      likes: '2.4K',
+      views: '45.2K',
+      rawEngagementScore: 48752,
+      rawPolarizationScore: 64,
+    },
+    sentiment: 'Neutral',
+    stance: 'Support',
+    riskLevel: 'Medium',
+    topic: 'CAMPAIGNING',
+    subTopic: 'Rally Logistics',
+    whyThisPost: {
+      title: 'WHY THIS POST?',
+      subtitle: 'Selected based on:',
+      reasons: [
+        {
+          label: 'Topic Relevance',
+          desc: 'Highly relevant to the selected topic',
+        },
+        {
+          label: 'Engagement',
+          desc: 'Significant interaction detected',
+        },
+        {
+          label: 'Polarization',
+          desc: 'Strong polarization indicators detected',
+        },
+      ],
+      details: 'Large audience broadcast generating contrasting partisan reaction threads across multiple political echo chambers.',
+    },
+    hoverDetails: {
+      stance: {
+        category: 'STANCE',
+        title: 'SUPPORT - WHY?',
+        color: '#2ECC71',
+        text: 'The author endorses the candidate and amplifies key political promises and rally messaging.',
+      },
+      sentiment: {
+        category: 'SENTIMENT',
+        title: 'NEUTRAL - WHY?',
+        color: '#9E9E9E',
+        text: 'Broadcast phrasing reports official rally proceedings with neutral journalistic tone.',
+      },
+      riskLevel: {
+        category: 'RISK LEVEL',
+        title: 'MEDIUM - WHY?',
+        color: '#FFA500',
+        text: 'Moderate risk due to polarized debate in reply comments between partisan supporters and opponents.',
+      },
+    },
+  },
+  {
+    id: 'post-4',
+    type: 'TEXT',
+    author: {
+      name: 'PoliticalWatchPK',
+      handle: '@PoliticalWatchPK',
+      avatar: null,
+      initials: 'PW',
+    },
+    date: 'May 13, 2025 • 05:20 PM',
+    timestamp: 1747156800000,
+    text: 'Another day, another broken promise. They only care about power, not the people. #Corruption #Election2026',
+    mediaUrl: null,
+    engagements: {
+      comments: '156',
+      reposts: '423',
+      likes: '1.1K',
+      views: '21.3K',
+      rawEngagementScore: 22979,
+      rawPolarizationScore: 78,
+    },
+    sentiment: 'Negative',
+    stance: 'Oppose',
+    riskLevel: 'High',
+    topic: 'CORRUPTION',
+    subTopic: 'Political Accountability',
+    whyThisPost: {
+      title: 'WHY THIS POST?',
+      subtitle: 'Selected based on:',
+      reasons: [
+        {
+          label: 'Topic Relevance',
+          desc: 'Highly relevant to the selected topic',
+        },
+        {
+          label: 'Engagement',
+          desc: 'Significant interaction detected',
+        },
+        {
+          label: 'Polarization',
+          desc: 'Strong polarization indicators detected',
+        },
+      ],
+      details: 'Strong corruption narrative resonance triggering high repost cascades among independent accountability watchdogs.',
+    },
+    hoverDetails: {
+      stance: {
+        category: 'STANCE',
+        title: 'OPPOSITE - WHY?',
+        color: '#E74C3C',
+        text: 'The author criticizes institutional integrity and accuses the political establishment of prioritizing self-interest.',
+      },
+      sentiment: {
+        category: 'SENTIMENT',
+        title: 'NEGATIVE - WHY?',
+        color: '#E74C3C',
+        text: 'High cynicism index accompanied by direct allegations of broken governance pledges.',
+      },
+      riskLevel: {
+        category: 'RISK LEVEL',
+        title: 'HIGH - WHY?',
+        color: '#E74C3C',
+        text: 'Charges of corruption fuel anti-establishment hostility and widen cross-bloc polarization.',
+      },
+    },
+  },
+  {
+    id: 'post-5',
+    type: 'TEXT',
+    author: {
+      name: 'VoterVoice',
+      handle: '@VoterVoice',
+      avatar: null,
+      initials: 'VV',
+    },
+    date: 'May 13, 2025 • 02:10 PM',
+    timestamp: 1747145400000,
+    text: 'What is the concrete plan to address the economic issues? We need policies, not empty slogans.',
+    mediaUrl: null,
+    engagements: {
+      comments: '45',
+      reposts: '12',
+      likes: '89',
+      views: '4.2K',
+      rawEngagementScore: 4346,
+      rawPolarizationScore: 22,
+    },
+    sentiment: 'Neutral',
+    stance: 'Neutral',
+    riskLevel: 'Low',
+    topic: 'ECONOMY',
+    subTopic: 'Policy Review',
+    whyThisPost: {
+      title: 'WHY THIS POST?',
+      subtitle: 'Selected based on:',
+      reasons: [
+        {
+          label: 'Topic Relevance',
+          desc: 'Highly relevant to the selected topic',
+        },
+        {
+          label: 'Engagement',
+          desc: 'Significant interaction detected',
+        },
+        {
+          label: 'Polarization',
+          desc: 'Strong polarization indicators detected',
+        },
+      ],
+      details: 'Constructive policy inquiry focusing on economic reform, inflation control, and civic accountability.',
+    },
+    hoverDetails: {
+      stance: {
+        category: 'STANCE',
+        title: 'NEUTRAL - WHY?',
+        color: '#9E9E9E',
+        text: 'Objective demand for tangible economic policies rather than partisan endorsement or opposition.',
+      },
+      sentiment: {
+        category: 'SENTIMENT',
+        title: 'NEUTRAL - WHY?',
+        color: '#9E9E9E',
+        text: 'Inquiry-oriented phrasing without abusive, defensive, or emotionally polarized rhetoric.',
+      },
+      riskLevel: {
+        category: 'RISK LEVEL',
+        title: 'LOW - WHY?',
+        color: '#2ECC71',
+        text: 'Low volatility with constructive engagement across diverse ideological backgrounds.',
+      },
+    },
+  },
+  {
+    id: 'post-6',
+    type: 'IMAGE',
+    author: {
+      name: 'DemocracyTracker_PK',
+      handle: '@DemocracyTracker_PK',
+      avatar: null,
+      initials: 'DT',
+    },
+    date: 'May 13, 2025 • 11:30 AM',
+    timestamp: 1747135800000,
+    text: 'Polling station turnout readiness infographic released ahead of the upcoming electoral window. Check your voter registration status! #Election2026 #CivicDuty',
+    mediaUrl: '/assets/content/rally_post.jpg',
+    engagements: {
+      comments: '64',
+      reposts: '198',
+      likes: '740',
+      views: '14.1K',
+      rawEngagementScore: 15102,
+      rawPolarizationScore: 25,
+    },
+    sentiment: 'Positive',
+    stance: 'Support',
+    riskLevel: 'Low',
+    topic: 'ELECTION',
+    subTopic: 'Voter Education',
+    whyThisPost: {
+      title: 'WHY THIS POST?',
+      subtitle: 'Selected based on:',
+      reasons: [
+        {
+          label: 'Topic Relevance',
+          desc: 'Highly relevant to the selected topic',
+        },
+        {
+          label: 'Engagement',
+          desc: 'Significant interaction detected',
+        },
+        {
+          label: 'Polarization',
+          desc: 'Strong polarization indicators detected',
+        },
+      ],
+      details: 'Civic information bulletin with positive cross-community distribution and high utility score.',
+    },
+    hoverDetails: {
+      stance: {
+        category: 'STANCE',
+        title: 'SUPPORT - WHY?',
+        color: '#2ECC71',
+        text: 'Supports democratic participation and voter mobilization across all registered constituencies.',
+      },
+      sentiment: {
+        category: 'SENTIMENT',
+        title: 'POSITIVE - WHY?',
+        color: '#2ECC71',
+        text: 'Encouraging and constructive tone aimed at peaceful democratic engagement.',
+      },
+      riskLevel: {
+        category: 'RISK LEVEL',
+        title: 'LOW - WHY?',
+        color: '#2ECC71',
+        text: 'Civic informational content exhibiting minimal polarization and zero hostility indicators.',
+      },
+    },
+  },
+];

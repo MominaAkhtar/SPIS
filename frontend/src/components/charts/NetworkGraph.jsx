@@ -14,7 +14,7 @@ import { Plus, Minus, Lock, Unlock, Maximize2 } from 'lucide-react';
 const DEFAULT_COMMUNITIES = [
   { id: 'comm_a', name: 'Community A', color: '#2ECC71', cx: 210, cy: 145 },
   { id: 'comm_b', name: 'Community B', color: '#AF7AC5', cx: 520, cy: 135 },
-  { id: 'comm_c', name: 'Community C', color: '#F39C12', cx: 225, cy: 310 },
+  { id: 'comm_c', name: 'Community C', color: '#FFA500', cx: 225, cy: 310 },
   { id: 'comm_d', name: 'Community D', color: '#3498DB', cx: 535, cy: 280 },
   { id: 'comm_e', name: 'Community E', color: '#E91E63', cx: 395, cy: 235 },
 ];
@@ -283,12 +283,12 @@ export default function NetworkGraph({
       >
         {/* Floating Zoom & Lock Controls */}
         {showControls && (
-          <div className="absolute top-3 right-3 z-20 flex flex-col items-center bg-[#111827]/90 backdrop-blur border border-[#1E2638] rounded-md p-0.5 shadow-md gap-0.5 text-[#8A94A6]">
+          <div className="absolute top-3 right-3 z-20 flex flex-col items-center bg-[#15181C] border border-[#2A3038] rounded-md p-0.5 shadow-md gap-0.5 text-[#8A94A6]">
             <button
               type="button"
               title="Reset Zoom"
               onClick={handleResetZoom}
-              className="p-1.5 hover:text-white hover:bg-[#1E2638] rounded transition-colors"
+              className="p-1.5 hover:text-white hover:bg-[#2A3038] rounded transition-colors"
             >
               <Maximize2 className="w-3.5 h-3.5" />
             </button>
@@ -296,7 +296,7 @@ export default function NetworkGraph({
               type="button"
               title="Zoom In"
               onClick={handleZoomIn}
-              className="p-1.5 hover:text-white hover:bg-[#1E2638] rounded transition-colors"
+              className="p-1.5 hover:text-white hover:bg-[#2A3038] rounded transition-colors"
             >
               <Plus className="w-3.5 h-3.5" />
             </button>
@@ -304,7 +304,7 @@ export default function NetworkGraph({
               type="button"
               title="Zoom Out"
               onClick={handleZoomOut}
-              className="p-1.5 hover:text-white hover:bg-[#1E2638] rounded transition-colors"
+              className="p-1.5 hover:text-white hover:bg-[#2A3038] rounded transition-colors"
             >
               <Minus className="w-3.5 h-3.5" />
             </button>
@@ -312,7 +312,7 @@ export default function NetworkGraph({
               type="button"
               title={isLocked ? "Unlock Canvas" : "Lock Canvas"}
               onClick={() => setIsLocked(!isLocked)}
-              className={`p-1.5 hover:text-white hover:bg-[#1E2638] rounded transition-colors ${
+              className={`p-1.5 hover:text-white hover:bg-[#2A3038] rounded transition-colors ${
                 isLocked ? 'text-[#00BFA5]' : ''
               }`}
             >
@@ -375,8 +375,8 @@ export default function NetworkGraph({
                   let ly = comm.cy - 48;
                   if (comm.id === 'comm_a') { lx = 210; ly = 96; }
                   else if (comm.id === 'comm_b') { lx = 520; ly = 88; }
-                  else if (comm.id === 'comm_c') { lx = 225; ly = 372; }
-                  else if (comm.id === 'comm_d') { lx = 535; ly = 345; }
+                  else if (comm.id === 'comm_c') { lx = 225; ly = 265; }
+                  else if (comm.id === 'comm_d') { lx = 535; ly = 240; }
                   else if (comm.id === 'comm_e') { lx = 395; ly = 195; }
                   return (
                     <text

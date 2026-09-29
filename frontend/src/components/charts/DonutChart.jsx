@@ -25,6 +25,7 @@ export default function DonutChart({
   showCenterCallout = true,
   showLegendValues = true,
   legendShape = 'circle',
+  centered = false, // true: donut + legend sit together in the middle of the card
   className = '',
 }) {
   const [hoveredIdx, setHoveredIdx] = useState(null);
@@ -52,7 +53,11 @@ export default function DonutChart({
   return (
     <div className={`flex flex-col justify-between h-full select-none ${className}`}>
       {/* Chart & Legend Row */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div
+        className={`flex flex-col sm:flex-row items-center ${
+          centered ? 'justify-center gap-8' : 'justify-between gap-4'
+        }`}
+      >
         {/* Donut SVG */}
         <div
           className="relative flex-shrink-0 flex items-center justify-center"
@@ -112,7 +117,7 @@ export default function DonutChart({
 
         {/* Legend / Breakdown Table */}
         {showSideLegend && (
-          <div className="flex-1 w-full space-y-1.5 min-w-0">
+          <div className={`min-w-0 ${centered ? 'flex-none space-y-1' : 'flex-1 w-full space-y-1.5'}`}>
             {data.map((item, idx) => {
               const isHovered = hoveredIdx === idx;
               return (

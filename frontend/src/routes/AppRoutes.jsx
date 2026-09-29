@@ -19,11 +19,13 @@ export default function AppRoutes() {
         <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
 
         {/* Dashboard and main feature views */}
-        <Route path="/" element={<Navigate to={ROUTES.NETWORK_ANALYSIS} replace />} />
+        <Route path="/" element={<Navigate to={ROUTES.DASHBOARD} replace />} />
         <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
         <Route path={ROUTES.TOPIC_MONITORING} element={<TopicMonitoringPage />} />
         <Route path={ROUTES.CONTENT_ANALYSIS} element={<ContentAnalysisPage />} />
         <Route path={ROUTES.NETWORK_ANALYSIS} element={<NetworkAnalysisPage />} />
+        <Route path="/network-analysis/communities" element={<NetworkAnalysisPage />} />
+        <Route path="/communities" element={<NetworkAnalysisPage />} />
         <Route path="/network%20analysis" element={<NetworkAnalysisPage />} />
         <Route path="/network analysis" element={<NetworkAnalysisPage />} />
         <Route path="/bridge-users" element={<NetworkAnalysisPage />} />
@@ -38,8 +40,8 @@ export default function AppRoutes() {
         <Route path="/alerts" element={<AlertsPredictionsPage />} />
         <Route path="/predictions" element={<AlertsPredictionsPage />} />
 
-        {/* Fallback to Network Analysis */}
-        <Route path="*" element={<Navigate to={ROUTES.NETWORK_ANALYSIS} replace />} />
+        {/* Fallback to Dashboard */}
+        <Route path="*" element={<Navigate to={ROUTES.DASHBOARD} replace />} />
       </Routes>
     </BrowserRouter>
   );

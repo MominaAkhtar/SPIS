@@ -161,34 +161,34 @@ export default function InteractionTypesTab() {
   return (
     <div className="space-y-4">
       {/* 1. Six Summary Metric Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
         {SUMMARY_METRICS.map((card) => {
           const Icon = card.icon;
           return (
             <div
               key={card.id}
-              className="bg-[#111827] border border-[#1E2638] hover:border-[#2A3B57] transition-all duration-200 rounded-xl p-3.5 sm:p-4 flex items-center gap-3 shadow-sm relative group overflow-hidden"
+              className="bg-[#111827] border border-[#1E2638] hover:border-[#2A3B57] transition-all duration-200 rounded-md px-3 py-3.5 flex items-center gap-2.5 shadow-sm relative group"
             >
               {/* Icon Container */}
               <div
-                className={`w-10 h-10 rounded-lg border ${card.iconBg} ${card.iconColor} flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105`}
+                className={`w-9 h-9 rounded-lg ${card.iconBg} ${card.iconColor} flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105`}
               >
                 <Icon className="w-5 h-5" />
               </div>
 
               {/* Text Container */}
               <div className="min-w-0 flex-1">
-                <span className="text-[10px] sm:text-[11px] font-semibold text-[#8A94A6] uppercase tracking-wider truncate block">
+                <span className="text-[9.5px] leading-tight font-semibold text-[#8A94A6] uppercase tracking-normal whitespace-nowrap block">
                   {card.title}
                 </span>
 
                 <div className="mt-0.5">
-                  <span className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
+                  <span className="text-xl font-bold text-white tracking-tight leading-tight whitespace-nowrap">
                     {card.value}
                   </span>
                 </div>
 
-                <div className="mt-0.5 text-xs truncate">
+                <div className="mt-0.5 text-xs whitespace-nowrap">
                   {card.change !== undefined ? (
                     <span className="inline-flex items-center text-[11px] font-medium text-[#2ECC71]">
                       <span className="mr-0.5">↑</span>
@@ -301,7 +301,7 @@ export default function InteractionTypesTab() {
             <NetworkGraph
               fill
               showLegend={true}
-              showLabels={true}
+              showLabels={false}
               showControls={true}
             />
           </div>
@@ -413,7 +413,7 @@ export default function InteractionTypesTab() {
       {/* 3. Bottom Section: Three Cards (Sentiment, Share Donut, Key Insights) */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Card 1: SENTIMENT BY INTERACTION TYPE */}
-        <div className="bg-[#111827] border border-[#1E2638] rounded-xl p-5 flex flex-col shadow-sm">
+        <div className="bg-[#111827] border border-[#1E2638] rounded-lg p-6 flex flex-col shadow-sm">
           {/* Header */}
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
@@ -424,7 +424,7 @@ export default function InteractionTypesTab() {
                 title="Sentiment distribution categorized across each interaction category"
                 className="text-[#8A94A6] hover:text-white cursor-help"
               >
-                <Info className="w-4 h-4" />
+                <Info className="w-4 h-4 fill-[#8A94A6] hover:fill-white text-[#111827] transition-colors" />
               </span>
             </div>
 
@@ -433,7 +433,7 @@ export default function InteractionTypesTab() {
               <button
                 type="button"
                 onClick={() => setIsSentimentScopeOpen(!isSentimentScopeOpen)}
-                className="flex items-center gap-1.5 pl-2.5 pr-2 py-1 rounded-lg bg-[#0E131E] border border-[#1A2130] text-[11px] font-medium text-[#738094] hover:text-white transition-all"
+                className="flex items-center gap-1.5 pl-2.5 pr-2 py-1 rounded-lg bg-[#1D2126]/40 border border-[#2A2D32] text-[11px] font-medium text-[#E1E4E6] hover:text-white transition-all"
               >
                 <span>{sentimentScope}</span>
                 <ChevronDown className="w-3.5 h-3.5 flex-shrink-0" strokeWidth={2.5} />
@@ -485,7 +485,7 @@ export default function InteractionTypesTab() {
         </div>
 
         {/* Card 2: INTERACTION SHARE */}
-        <div className="bg-[#111827] border border-[#1E2638] rounded-xl p-5 flex flex-col shadow-sm">
+        <div className="bg-[#111827] border border-[#1E2638] rounded-lg p-6 flex flex-col shadow-sm">
           {/* Header */}
           <div className="flex items-center gap-2 mb-4">
             <h3 className="text-[13px] font-bold text-white uppercase tracking-wide">
@@ -495,7 +495,7 @@ export default function InteractionTypesTab() {
               title="Proportion of total engagement across interaction types"
               className="text-[#8A94A6] hover:text-white cursor-help"
             >
-              <Info className="w-4 h-4" />
+              <Info className="w-4 h-4 fill-[#8A94A6] hover:fill-white text-[#111827] transition-colors" />
             </span>
           </div>
 
@@ -507,15 +507,16 @@ export default function InteractionTypesTab() {
               showLegendValues={false}
               legendShape="square"
               infoText={null}
-              size={155}
-              strokeWidth={22}
+              size={140}
+              strokeWidth={17}
+              centered
               className="w-full"
             />
           </div>
         </div>
 
         {/* Card 3: KEY INSIGHTS */}
-        <div className="bg-[#111827] border border-[#1E2638] rounded-xl p-5 flex flex-col shadow-sm">
+        <div className="bg-[#111827] border border-[#1E2638] rounded-lg p-6 flex flex-col shadow-sm">
           {/* Header */}
           <div className="flex items-center gap-2 mb-4">
             <h3 className="text-[13px] font-bold text-white uppercase tracking-wide">
@@ -525,39 +526,39 @@ export default function InteractionTypesTab() {
               title="Automated intelligence observations on interaction patterns"
               className="text-[#8A94A6] hover:text-white cursor-help"
             >
-              <Info className="w-4 h-4" />
+              <Info className="w-4 h-4 fill-[#8A94A6] hover:fill-white text-[#111827] transition-colors" />
             </span>
           </div>
 
           {/* Insights List */}
-          <div className="flex-1 flex flex-col justify-between gap-3">
+          <div className="flex-1 flex flex-col justify-between gap-4">
             {/* Insight 1: Replies */}
-            <div className="p-3 rounded-lg bg-[#0E1524] border border-[#1A253D] flex items-start gap-3">
+            <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-lg bg-[#14233D] text-[#3498DB] flex items-center justify-center flex-shrink-0 mt-0.5">
                 <Zap className="w-4 h-4" />
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                <strong className="text-white font-semibold">Replies dominate</strong> the conversation with 45.2% of total interactions, indicating high discussion activity.
+              <p className="text-xs text-[#8A94A6] leading-relaxed">
+                <strong className="text-slate-100 font-semibold">Replies dominate</strong> the conversation with 45.2% of total interactions, indicating high discussion activity.
               </p>
             </div>
 
             {/* Insight 2: Reposts */}
-            <div className="p-3 rounded-lg bg-[#0E1524] border border-[#1A253D] flex items-start gap-3">
+            <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-lg bg-[#142222] text-[#2ECC71] flex items-center justify-center flex-shrink-0 mt-0.5">
                 <Repeat className="w-4 h-4" />
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                <strong className="text-white font-semibold">Reposts show strong</strong> amplification potential with 22.1% of total interactions.
+              <p className="text-xs text-[#8A94A6] leading-relaxed">
+                <strong className="text-slate-100 font-semibold">Reposts show strong</strong> amplification potential with 22.1% of total interactions.
               </p>
             </div>
 
             {/* Insight 3: Likes */}
-            <div className="p-3 rounded-lg bg-[#0E1524] border border-[#1A253D] flex items-start gap-3">
+            <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-lg bg-[#341624] text-[#EC407A] flex items-center justify-center flex-shrink-0 mt-0.5">
                 <Heart className="w-4 h-4" />
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                <strong className="text-white font-semibold">Likes/Reactions reflect</strong> active engagement and approval within the network.
+              <p className="text-xs text-[#8A94A6] leading-relaxed">
+                <strong className="text-slate-100 font-semibold">Likes/Reactions reflect</strong> active engagement and approval within the network.
               </p>
             </div>
           </div>

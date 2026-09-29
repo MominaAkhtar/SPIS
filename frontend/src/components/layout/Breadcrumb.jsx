@@ -1,39 +1,36 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
 import { ROUTES } from '../../constants/routes';
 
 /**
  * SPIS Breadcrumb Component
- * Automatically resolves current route or accepts explicit items array.
- * Matches: Home / Network Analysis / Interaction Types
+ * Matches screenshot: HOME / DASHBOARD
  */
 export default function Breadcrumb({ items }) {
   const location = useLocation();
 
-  // Route map for automatic breadcrumbs
   const routeNames = {
-    [ROUTES.DASHBOARD]: 'Dashboard',
-    [ROUTES.TOPIC_MONITORING]: 'Topic Monitoring',
-    [ROUTES.CONTENT_ANALYSIS]: 'Content Analysis',
-    [ROUTES.NETWORK_ANALYSIS]: 'Network Analysis',
-    [ROUTES.ALERTS_PREDICTIONS]: 'Alerts & Predictions',
+    [ROUTES.DASHBOARD]: 'DASHBOARD',
+    [ROUTES.TOPIC_MONITORING]: 'TOPIC MONITORING',
+    [ROUTES.CONTENT_ANALYSIS]: 'CONTENT ANALYSIS',
+    [ROUTES.NETWORK_ANALYSIS]: 'NETWORK ANALYSIS',
+    [ROUTES.ALERTS_PREDICTIONS]: 'ALERTS & PREDICTIONS',
   };
 
   let breadcrumbs = items;
 
   if (!breadcrumbs) {
     const currentPath = location.pathname;
-    const currentName = routeNames[currentPath] || 'Overview';
+    const currentName = routeNames[currentPath] || 'DASHBOARD';
 
     breadcrumbs = [
-      { label: 'Home', to: ROUTES.DASHBOARD },
-      { label: currentName, to: currentPath === ROUTES.DASHBOARD ? null : currentPath },
+      { label: 'HOME', to: ROUTES.DASHBOARD },
+      { label: currentName, to: null },
     ];
   }
 
   return (
-    <nav aria-label="Breadcrumb" className="flex items-center text-sm">
+    <nav aria-label="Breadcrumb" className="flex items-center text-xs tracking-wider select-none">
       <ol className="inline-flex items-center">
         {breadcrumbs.map((item, index) => {
           const isLast = index === breadcrumbs.length - 1;
@@ -41,21 +38,17 @@ export default function Breadcrumb({ items }) {
           return (
             <li key={index} className="inline-flex items-center">
               {index > 0 && (
-                <span className="mx-2 text-slate-600 select-none">/</span>
+                <span className="mx-2 text-[#616A75] font-normal">/</span>
               )}
               {item.to && !isLast ? (
                 <Link
                   to={item.to}
-                  className={`hover:text-white transition-colors ${
-                    index === 0
-                      ? 'text-[#9E9E9E] font-normal'
-                      : 'text-slate-400 font-semibold'
-                  }`}
+                  className="text-[#9E9E9E] hover:text-white transition-colors uppercase font-medium"
                 >
                   {item.label}
                 </Link>
               ) : (
-                <span className={`font-semibold ${isLast ? 'text-teal-500' : 'text-slate-400'}`}>
+                <span className="font-bold text-white uppercase">
                   {item.label}
                 </span>
               )}

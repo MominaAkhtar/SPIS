@@ -7,13 +7,13 @@ import Topbar from './Topbar';
  * Serves as the primary application scaffold across all platform pages:
  * - Persistent or responsive Sidebar
  * - Sticky Topbar with full actions & profile
- * - Deep dark background `#060B13`
+ * - Deep dark background `#0B0F19`
  * - Platform disclaimer footer bar
  */
 export default function DashboardLayout({
   children,
   breadcrumbs,
-  showDisclaimer = true,
+  showDisclaimer = false,
   disclaimerText = 'SPIS ANALYZES PUBLIC POLITICAL DISCUSSIONS ON X (TWITTER) TO IDENTIFY POLARIZATION, COMMUNITIES, AND BRIDGE USERS.',
   secondaryDisclaimer,
 }) {
